@@ -1,0 +1,15 @@
+{
+  "name": "improver-cli",
+  "version": "0.0.1",
+  "description": "Command line tool to improve your development process with latest best practices.",
+  "main": "index.js",
+  "author": "Star Bist <malimirkeccita@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "configstore": "^4.0.0",
+    "figlet": "^1.2.1",
+    "inquirer": "^6.2.0",
+    "ncp": "^2.0.0"
+  }
+}
