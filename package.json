@@ -1,16 +1,63 @@
 {
-  "name": "improver-cli",
+  "name": "starter-project-cli",
+  "preferGlobal": true,
+  "bin": {
+    "spro": "./index.js"
+  },
   "version": "0.0.1",
-  "description": "Command line tool to improve your development process with latest best practices.",
+  "description": "Command line tool for Starter Project - a set of gulp tasks that helps you develop high performant websites using latest best practices.",
   "main": "index.js",
-  "author": "Star Bist <malimirkeccita@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maliMirkec/starter-project-cli.git"
+  },
+  "keywords": [
+    "Yarn",
+    "Gulp",
+    "Server versioning",
+    "Browser-sync",
+    "Sass",
+    "Modular Scale",
+    "CSS Locks",
+    "Stylelint",
+    "JavaScript",
+    "es6",
+    "Babel",
+    "Standard",
+    "ESLint",
+    "HTML",
+    "Pug",
+    "Markdown",
+    "htmllint",
+    "Fonts",
+    "Imagemin",
+    "mozjpeg",
+    "pngquant",
+    "Favicon",
+    "Critical CSS",
+    "Penthouse",
+    "Sourcemaps",
+    "Gzip",
+    "SassDoc",
+    "JSDoc",
+    "Styleguide",
+    "CLI",
+    "Command Line Interface"
+  ],
+  "author": "Silvestar Bistrović <me@silvestarbistrovic.from.hr>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maliMirkec/starter-project-cli/issues"
+  },
+  "homepage": "https://starter.silvestarbistrovic.from.hr",
   "dependencies": {
     "chalk": "^2.4.1",
     "clear": "^0.1.0",
+    "commander": "^2.19.0",
     "configstore": "^4.0.0",
     "figlet": "^1.2.1",
     "inquirer": "^6.2.0",
+    "mkdirp": "^0.5.1",
     "ncp": "^2.0.0"
   }
 }

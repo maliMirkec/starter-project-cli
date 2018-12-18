@@ -1,8 +1,0 @@
-{
-  "override": true,
-  "proot": "./dest/",
-  "src": "src",
-  "dist": "dist",
-  "gulp": "_gulp",
-  "override2": false
-}
