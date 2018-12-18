@@ -8,6 +8,8 @@ const sp = require('./lib/starter-project')
 log.clear()
 log.figlet('S-PRO', false)
 log.message(`\n ** Starter Project CLI **\n`, false)
+log.message(process.cwd())
+log.message(__filename)
 
 program
   .version('0.0.1')
