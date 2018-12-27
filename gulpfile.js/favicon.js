@@ -16,9 +16,9 @@ if (global.config.favicon.run) {
   // Inject the favicon markups in your HTML pages. You should run
   // this task whenever you modify a page. You can keep this task
   // as is or refactor your existing HTML pipeline.
-  gulp.task('favicon:inject', () => gulp.src([global.config.root + global.config.favicon.src])
+  gulp.task('favicon:inject', () => gulp.src([global.config.proot + global.config.favicon.src])
     .pipe(realFavicon.injectFaviconMarkups(parsedFaviconData.favicon.html_code))
-    .pipe(gulp.dest(global.config.root + global.config.favicon.dest)))
+    .pipe(gulp.dest(global.config.proot + global.config.favicon.dest)))
 
   // Check for updates on RealFaviconGenerator (think: Apple has just
   // released a new Touch icon along with the latest version of iOS).

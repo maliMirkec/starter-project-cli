@@ -10,7 +10,7 @@ const standard = require('gulp-standard')
 const gulpif = require('gulp-if')
 const runSequence = require('run-sequence')
 
-gulp.task('js:build', () => gulp.src(`${global.config.root + global.config.js.src}**/*.js`)
+gulp.task('js:build', () => gulp.src(`${global.config.proot + global.config.js.src}**/*.js`)
   .pipe(gulpif(global.config.js.sourcemapsConfig.run, sourcemaps.init()))
   .pipe(eslint(global.config.js.eslintConfig))
   .pipe(include(global.config.js.includeConfig))
@@ -26,23 +26,23 @@ gulp.task('js:build', () => gulp.src(`${global.config.root + global.config.js.sr
   .on('error', (err) => {
     gutil.log(gutil.colors.red('[Error]'), err.toString())
   })
-  .pipe(gulpif(global.config.js.sourcemapsConfig.run, sourcemaps.write(global.config.root)))
-  .pipe(gulp.dest(global.config.root + global.config.dest + global.config.js.dest)))
+  .pipe(gulpif(global.config.js.sourcemapsConfig.run, sourcemaps.write(global.config.proot)))
+  .pipe(gulp.dest(global.config.proot + global.config.dest + global.config.js.dest)))
 
-gulp.task('js:standard', () => gulp.src(`${global.config.root + global.config.js.src}**/*.js`)
+gulp.task('js:standard', () => gulp.src(`${global.config.proot + global.config.js.src}**/*.js`)
   .pipe(standard())
   .pipe(standard.reporter('default', global.config.js.standardConfig)))
 
-gulp.task('js:uglify', () => gulp.src([`${global.config.root + global.config.dest + global.config.js.dest}**/*.js`, `!${global.config.root + global.config.dest + global.config.js.dest}**/*.min.js`])
+gulp.task('js:uglify', () => gulp.src([`${global.config.proot + global.config.dest + global.config.js.dest}**/*.js`, `!${global.config.proot + global.config.dest + global.config.js.dest}**/*.min.js`])
   .pipe(gulpif(global.config.js.sourcemapsConfig.run, sourcemaps.init()))
   .pipe(uglify())
   .pipe(rename(global.config.js.renameConfig))
-  .pipe(gulpif(global.config.js.sourcemapsConfig.run, sourcemaps.write(global.config.root)))
-  .pipe(gulp.dest(global.config.root + global.config.dest + global.config.js.dest)))
+  .pipe(gulpif(global.config.js.sourcemapsConfig.run, sourcemaps.write(global.config.proot)))
+  .pipe(gulp.dest(global.config.proot + global.config.dest + global.config.js.dest)))
 
 gulp.task('js', callback => runSequence('js:build', 'js:standard', 'js:uglify', callback))
 
-gulp.task('js:build:deploy', () => gulp.src(`${global.config.root + global.config.js.src}**/*.js`)
+gulp.task('js:build:deploy', () => gulp.src(`${global.config.proot + global.config.js.src}**/*.js`)
   .pipe(eslint(global.config.js.eslintConfig))
   .pipe(include(global.config.js.includeConfig))
   .pipe(eslint.format())
@@ -57,15 +57,15 @@ gulp.task('js:build:deploy', () => gulp.src(`${global.config.root + global.confi
   .on('error', (err) => {
     gutil.log(gutil.colors.red('[Error]'), err.toString())
   })
-  .pipe(gulp.dest(global.config.root + global.config.dest + global.config.js.dest)))
+  .pipe(gulp.dest(global.config.proot + global.config.dest + global.config.js.dest)))
 
-gulp.task('js:standard:deploy', () => gulp.src(`${global.config.root + global.config.js.src}**/*.js`)
+gulp.task('js:standard:deploy', () => gulp.src(`${global.config.proot + global.config.js.src}**/*.js`)
   .pipe(standard())
   .pipe(standard.reporter('default', global.config.js.standardConfig)))
 
-gulp.task('js:uglify:deploy', () => gulp.src([`${global.config.root + global.config.dest + global.config.js.dest}**/*.js`, `!${global.config.root + global.config.dest + global.config.js.dest}**/*.min.js`])
+gulp.task('js:uglify:deploy', () => gulp.src([`${global.config.proot + global.config.dest + global.config.js.dest}**/*.js`, `!${global.config.proot + global.config.dest + global.config.js.dest}**/*.min.js`])
   .pipe(uglify())
   .pipe(rename(global.config.js.renameConfig))
-  .pipe(gulp.dest(global.config.root + global.config.dest + global.config.js.dest)))
+  .pipe(gulp.dest(global.config.proot + global.config.dest + global.config.js.dest)))
 
 gulp.task('js:deploy', callback => runSequence('js:build:deploy', 'js:standard:deploy', 'js:uglify:deploy', callback))

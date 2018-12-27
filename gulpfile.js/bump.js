@@ -1,0 +1,34 @@
+const { src, dest, gulp } = require('gulp')
+const bump = require('gulp-bump')
+const { helpers } = require('./helpers')
+
+// Will patch the version
+function patch () {
+  return src([`${helpers.trim(global.config.proot)}/package.json`])
+    .pipe(bump())
+    .pipe(dest(global.config.proot))
+}
+
+// Will update minor version
+function minor () {
+  return src([`${helpers.trim(global.config.proot)}/package.json`])
+    .pipe(bump({
+      type: 'minor'
+    }))
+    .pipe(dest(global.config.proot))
+}
+
+// Will update major version
+function major () {
+  return src([`${helpers.trim(global.config.proot)}/package.json`])
+    .pipe(bump({
+      type: 'major'
+    }))
+    .pipe(dest(global.config.proot))
+}
+
+exports.bump = {
+  patch,
+  minor,
+  major
+}
