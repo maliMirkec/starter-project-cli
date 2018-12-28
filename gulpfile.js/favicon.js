@@ -1,7 +1,6 @@
 const gulp = require('gulp')
 const realFavicon = require('gulp-real-favicon')
 const fs = require('fs')
-const runSequence = require('run-sequence')
 
 // Generate the icons. This task takes a few seconds to complete.
 // You should run it at least once to create the icons. Then,

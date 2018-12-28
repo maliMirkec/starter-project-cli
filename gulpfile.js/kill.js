@@ -1,7 +1,6 @@
 const gulp = require('gulp')
 const exit = require('gulp-exit')
 const wait = require('gulp-wait')
-const runSequence = require('run-sequence').use(gulp)
 
 gulp.task('kill:browser-sync', () => global.bs.exit())
 

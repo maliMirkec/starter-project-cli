@@ -45,7 +45,7 @@
   },
   "kss": {
     "run": true,
-    "dist": "favicons"
+    "dist": "kss"
   },
   "sassdoc": {
     "run": true

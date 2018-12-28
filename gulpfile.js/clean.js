@@ -1,18 +1,20 @@
-const gulp = require('gulp')
+// const gulp = require('gulp')
 const del = require('del')
 
-const delSrc = []
+const { helpers } = require('./helpers')
 
-Object.keys(global.config).forEach((key) => {
-  if (global.config[key].run && global.config[key].clean) {
-    if (Array.isArray(global.config[key].clean)) {
-      global.config[key].clean.forEach((aKey) => {
-        delSrc.push(global.config.proot + global.config.dest + aKey)
-      })
-    } else {
-      delSrc.push(global.config.proot + global.config.dest + global.config[key].clean)
-    }
-  }
-})
+// Get all dist folders
+function get () {
+  return Object.values(global.config)
+    .filter(val => val.run && val.dist)
+    .map(val => `${helpers.dist()}/${helpers.trim(val.dist)}`)
+}
 
-gulp.task('clean', () => del(delSrc))
+// Delete all dist folders
+function start () {
+  return del(get())
+}
+
+exports.clean = {
+  start
+}

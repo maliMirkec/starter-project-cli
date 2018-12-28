@@ -8,7 +8,6 @@ const uglify = require('gulp-uglify')
 const rename = require('gulp-rename')
 const standard = require('gulp-standard')
 const gulpif = require('gulp-if')
-const runSequence = require('run-sequence')
 
 gulp.task('js:build', () => gulp.src(`${global.config.proot + global.config.js.src}**/*.js`)
   .pipe(gulpif(global.config.js.sourcemapsConfig.run, sourcemaps.init()))

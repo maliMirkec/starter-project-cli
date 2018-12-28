@@ -8,6 +8,18 @@ const path = require('path')
 
 https:// stackoverflow.com/questions/27689351/how-can-i-use-a-glob-to-ignore-files-that-start-with-an-underscore
 
+const { helpers } = require('./helpers')
+
+function start () {
+  return src(`${helpers.src()}/${global.config.css.src}`)
+    .pipe(sass())
+    .pipe(dest(`${helpers.dist()}/${global.config.css.dist}`))
+}
+
+exports.css = {
+  start
+}
+
 gulp.task('html:dist', () => gulp.src(`${global.config.proot + global.config.html.src}.pug`)
   .pipe(pug(global.config.html.pugConfig))
   .pipe(htmllint(global.config.html.htmllintConfig))
