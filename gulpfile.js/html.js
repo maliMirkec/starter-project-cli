@@ -1,4 +1,4 @@
-const gulp = require('gulp')
+const { src, dest, watch } = require('gulp')
 const pug = require('gulp-pug')
 const htmlmin = require('gulp-htmlmin')
 const htmllint = require('gulp-htmllint')
@@ -6,36 +6,49 @@ const rename = require('gulp-rename')
 const inlineSource = require('gulp-inline-source')
 const path = require('path')
 
-https:// stackoverflow.com/questions/27689351/how-can-i-use-a-glob-to-ignore-files-that-start-with-an-underscore
-
 const { helpers } = require('./helpers')
 
-function start () {
-  return src(`${helpers.src()}/${global.config.css.src}`)
-    .pipe(sass())
-    .pipe(dest(`${helpers.dist()}/${global.config.css.dist}`))
+const pugConfig = {
+  pretty: true,
+  basedir: `${helpers.src()}/${helpers.trim(global.config.html.src)}/`
 }
 
-exports.css = {
-  start
+const htmllintConfig = {
+  config: `${helpers.proot()}/.htmllintrc`,
+  failOnError: true
 }
 
-gulp.task('html:dist', () => gulp.src(`${global.config.proot + global.config.html.src}.pug`)
-  .pipe(pug(global.config.html.pugConfig))
-  .pipe(htmllint(global.config.html.htmllintConfig))
-  .pipe(htmlmin(global.config.html.htmlminConfig))
-  .pipe(inlineSource({
-    rootpath: path.resolve(global.config.proot + global.config.html.inlineSourcePath)
-  }))
-  .pipe(rename(global.config.html.renameConfig))
-  .pipe(gulp.dest(global.config.proot + global.config.html.dest)))
+const htmlminConfig = {
+  collapseWhitespace: true
+}
 
-gulp.task('html:dev', () => gulp.src(`${global.config.proot + global.config.html.src}.pug`)
-  .pipe(pug(global.config.html.pugConfig))
-  .pipe(htmllint(global.config.html.htmllintConfig))
-  .pipe(inlineSource({
-    rootpath: path.resolve(global.config.proot + global.config.html.inlineSourcePath),
-    ignore: ['css', 'script']
-  }))
-  .pipe(rename(global.config.html.renameConfig))
-  .pipe(gulp.dest(global.config.proot + global.config.html.dest)))
+const renameConfig = {
+  extname: '.html'
+}
+
+const inlineConfig = {
+  rootpath: path.resolve(helpers.dist())
+}
+
+const watchConfig = {
+  ignoreInitial: false
+}
+
+function htmlStart () {
+  return src(`${helpers.src()}/${helpers.trim(global.config.html.src)}/[^_]**/*.pug`)
+    .pipe(pug(pugConfig))
+    .pipe(htmllint(htmllintConfig))
+    .pipe(htmlmin(htmlminConfig))
+    .pipe(inlineSource(inlineConfig))
+    .pipe(rename(renameConfig))
+    .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.html.dist)}`))
+}
+
+function htmlListen () {
+  watch(`${helpers.src()}/${helpers.trim(global.config.html.src)}/*.pug`, watchConfig, htmlStart)
+}
+
+exports.html = {
+  htmlStart,
+  htmlListen
+}

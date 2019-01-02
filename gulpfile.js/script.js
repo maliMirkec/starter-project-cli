@@ -1,4 +1,4 @@
-const gulp = require('gulp')
+const { src, dest, watch } = require('gulp')
 const eslint = require('gulp-eslint')
 const gutil = require('gulp-util')
 const babel = require('gulp-babel')
@@ -7,64 +7,75 @@ const sourcemaps = require('gulp-sourcemaps')
 const uglify = require('gulp-uglify')
 const rename = require('gulp-rename')
 const standard = require('gulp-standard')
-const gulpif = require('gulp-if')
 
-gulp.task('js:build', () => gulp.src(`${global.config.proot + global.config.js.src}**/*.js`)
-  .pipe(gulpif(global.config.js.sourcemapsConfig.run, sourcemaps.init()))
-  .pipe(eslint(global.config.js.eslintConfig))
-  .pipe(include(global.config.js.includeConfig))
-  .pipe(eslint.format())
-  .pipe(eslint.failAfterError())
-  .pipe(eslint.result((result) => {
-    gutil.log(gutil.colors.blue(`ESLint result: ${result.filePath}`))
-    gutil.log(gutil.colors.green(`# Messages: ${result.messages.length}`))
-    gutil.log(gutil.colors.yellow(`# Warnings: ${result.warningCount}`))
-    gutil.log(gutil.colors.red(`# Errors: ${result.errorCount}`))
-  }))
-  .pipe(babel(global.config.js.babelConfig))
-  .on('error', (err) => {
-    gutil.log(gutil.colors.red('[Error]'), err.toString())
-  })
-  .pipe(gulpif(global.config.js.sourcemapsConfig.run, sourcemaps.write(global.config.proot)))
-  .pipe(gulp.dest(global.config.proot + global.config.dest + global.config.js.dest)))
+const { helpers } = require('./helpers')
 
-gulp.task('js:standard', () => gulp.src(`${global.config.proot + global.config.js.src}**/*.js`)
-  .pipe(standard())
-  .pipe(standard.reporter('default', global.config.js.standardConfig)))
+const eslintConfig = {
+  configFile: `${helpers.proot()}/.eslintrc.json`,
+  fix: true,
+  quiet: true
+}
 
-gulp.task('js:uglify', () => gulp.src([`${global.config.proot + global.config.dest + global.config.js.dest}**/*.js`, `!${global.config.proot + global.config.dest + global.config.js.dest}**/*.min.js`])
-  .pipe(gulpif(global.config.js.sourcemapsConfig.run, sourcemaps.init()))
-  .pipe(uglify())
-  .pipe(rename(global.config.js.renameConfig))
-  .pipe(gulpif(global.config.js.sourcemapsConfig.run, sourcemaps.write(global.config.proot)))
-  .pipe(gulp.dest(global.config.proot + global.config.dest + global.config.js.dest)))
+const includeConfig = {
+  hardFail: true,
+  includePaths: [
+    `${helpers.proot()}/node_modules`
+  ]
+}
 
-gulp.task('js', callback => runSequence('js:build', 'js:standard', 'js:uglify', callback))
+const babelConfig = {
+  presets: ['@babel/env']
+}
 
-gulp.task('js:build:deploy', () => gulp.src(`${global.config.proot + global.config.js.src}**/*.js`)
-  .pipe(eslint(global.config.js.eslintConfig))
-  .pipe(include(global.config.js.includeConfig))
-  .pipe(eslint.format())
-  .pipe(eslint.failAfterError())
-  .pipe(eslint.result((result) => {
-    gutil.log(gutil.colors.blue(`ESLint result: ${result.filePath}`))
-    gutil.log(gutil.colors.green(`# Messages: ${result.messages.length}`))
-    gutil.log(gutil.colors.yellow(`# Warnings: ${result.warningCount}`))
-    gutil.log(gutil.colors.red(`# Errors: ${result.errorCount}`))
-  }))
-  .pipe(babel(global.config.js.babelConfig))
-  .on('error', (err) => {
-    gutil.log(gutil.colors.red('[Error]'), err.toString())
-  })
-  .pipe(gulp.dest(global.config.proot + global.config.dest + global.config.js.dest)))
+const standardConfig = {
+  breakOnError: false,
+  showRuleNames: true,
+  standard: {
+    globals: [
+      'requestAnimationFrame',
+      'sessionStorage'
+    ]
+  }
+}
 
-gulp.task('js:standard:deploy', () => gulp.src(`${global.config.proot + global.config.js.src}**/*.js`)
-  .pipe(standard())
-  .pipe(standard.reporter('default', global.config.js.standardConfig)))
+const renameConfig = {
+  suffix: '.min'
+}
 
-gulp.task('js:uglify:deploy', () => gulp.src([`${global.config.proot + global.config.dest + global.config.js.dest}**/*.js`, `!${global.config.proot + global.config.dest + global.config.js.dest}**/*.min.js`])
-  .pipe(uglify())
-  .pipe(rename(global.config.js.renameConfig))
-  .pipe(gulp.dest(global.config.proot + global.config.dest + global.config.js.dest)))
+const watchConfig = {
+  ignoreInitial: false
+}
 
-gulp.task('js:deploy', callback => runSequence('js:build:deploy', 'js:standard:deploy', 'js:uglify:deploy', callback))
+const sourcemapsConfig = `${helpers.src()}/${helpers.trim(global.config.js.dist)}`
+
+function jsStart () {
+  return src(`${helpers.src()}/${helpers.trim(global.config.js.src)}/*.js`)
+    .pipe(sourcemaps.init())
+    .pipe(standard())
+    .pipe(standard.reporter('default', standardConfig))
+    .pipe(eslint(eslintConfig))
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError())
+    .pipe(eslint.result((result) => {
+      gutil.log(gutil.colors.blue(`ESLint result: ${result.filePath}`))
+      gutil.log(gutil.colors.green(`# Messages: ${result.messages.length}`))
+      gutil.log(gutil.colors.yellow(`# Warnings: ${result.warningCount}`))
+      gutil.log(gutil.colors.red(`# Errors: ${result.errorCount}`))
+    }))
+    .pipe(include(includeConfig))
+    .pipe(babel(babelConfig))
+    .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.js.dist)}`))
+    .pipe(uglify())
+    .pipe(rename(renameConfig))
+    .pipe(sourcemaps.write(sourcemapsConfig))
+    .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.js.dist)}`))
+}
+
+function jsListen () {
+  watch(`${helpers.src()}/${helpers.trim(global.config.js.src)}/*.js`, watchConfig, jsStart)
+}
+
+exports.js = {
+  jsStart,
+  jsListen
+}

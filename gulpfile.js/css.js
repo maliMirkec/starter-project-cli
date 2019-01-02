@@ -11,11 +11,11 @@ const { helpers } = require('./helpers')
 
 const sassConfig = {
   includePaths: [
-    './node_modules/modularscale-sass/stylesheets/',
-    './node_modules/sass-mq/',
-    './node_modules/normalize.css/',
-    './src/scss/',
-    './src/scss/components'
+    `${helpers.proot()}/node_modules/modularscale-sass/stylesheets/`,
+    `${helpers.proot()}/node_modules/sass-mq/`,
+    `${helpers.proot()}/node_modules/normalize.css/`,
+    `${helpers.src()}/scss/`,
+    `${helpers.src()}/scss/components/`
   ]
 }
 
@@ -39,34 +39,36 @@ const watchConfig = {
   ignoreInitial: false
 }
 
-function minify () {
+const sourcemapsConfig = `${helpers.src()}/${helpers.trim(global.config.css.dist)}`
+
+function cssMinify () {
   return src(`${helpers.src()}/${helpers.trim(global.config.css.dist)}/*.critical.scss`)
     .pipe(cleanCSS())
     .pipe(rename(renameConfig))
-    .pipe(dest(`${helpers.dist()}/${global.config.css.dist}`))
+    .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.css.dist)}`))
 }
 
-function start () {
+function cssStart () {
   return src(`${helpers.src()}/${helpers.trim(global.config.css.src)}/*.scss`)
     .pipe(sourcemaps.init())
     .pipe(gulpStylelint(styleLintConfig))
     .pipe(sass(sassConfig).on('error', sass.logError))
     .pipe(cssimport())
     .pipe(autoprefixer(autoprefixedConfig))
-    .pipe(sourcemaps.write())
-    .pipe(dest(`${helpers.dist()}/${global.config.css.dist}`))
+    .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.css.dist)}`))
     .pipe(cleanCSS())
     .pipe(rename(renameConfig))
-    .pipe(dest(`${helpers.dist()}/${global.config.css.dist}`))
+    .pipe(sourcemaps.write(sourcemapsConfig))
+    .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.css.dist)}`))
 }
 
-function listen () {
-  watch(`${helpers.src()}/${helpers.trim(global.config.css.src)}/*.scss`, watchConfig, start)
-  watch(`${helpers.src()}/${helpers.trim(global.config.css.dist)}/*.critical.scss`, watchConfig, minify)
+function cssListen () {
+  watch(`${helpers.src()}/${helpers.trim(global.config.css.src)}/*.scss`, watchConfig, cssStart)
+  watch(`${helpers.src()}/${helpers.trim(global.config.css.dist)}/*.critical.scss`, watchConfig, cssMinify)
 }
 
 exports.css = {
-  minify,
-  start,
-  listen
+  cssMinify,
+  cssStart,
+  cssListen
 }

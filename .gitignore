@@ -3,3 +3,4 @@ yarn.lock
 yarn-error.log
 .yarnclean
 /test/
+/dist/
