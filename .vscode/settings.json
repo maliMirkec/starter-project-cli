@@ -1,0 +1,10 @@
+{
+  "emeraldwalk.runonsave": {
+    "commands": [{
+      "match": "\\.css?$",
+      "cmd": "cd ${workspaceRoot} && stylefmt -c .stylelintrc ${file}"
+    }]
+  },
+  "eslint.enable": true,
+  "git.ignoreLimitWarning": true
+}
