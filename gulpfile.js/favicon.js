@@ -16,17 +16,19 @@ function faviconStart (cb) {
     markupFile: `${helpers.parse(faviconDataConfig.markupFile)}`
   })
 
-  if (fs.existsSync(thisFaviconDataConfig.markupFile)) {
-    realFavicon.generateFavicon(thisFaviconDataConfig, () => {
+  realFavicon.generateFavicon(thisFaviconDataConfig, () => {
+    if (fs.existsSync(thisFaviconDataConfig.markupFile)) {
       const parsedFaviconFile = JSON.parse(fs.readFileSync(thisFaviconDataConfig.markupFile))
+
+      console.log(thisFaviconDataConfig)
 
       src(helpers.parse(faviconConfig.src))
         .pipe(realFavicon.injectFaviconMarkups(parsedFaviconFile.favicon.html_code))
         .pipe(dest(helpers.parse(faviconConfig.dest)))
+    }
 
-      cb()
-    })
-  }
+    cb()
+  })
 }
 
 // When favicon file change, it will process favicon file, too
