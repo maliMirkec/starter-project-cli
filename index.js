@@ -16,20 +16,11 @@ program
 program
   .command('start')
   .alias('s')
-  .description('Initialize Basic Starter Project')
+  .description('Initialize Starter Project')
   .action(() => {
     inquirer.basicInteraction().then((answers) => {
       sp.run(answers)
     })
   })
-
-  // .command('starter-project-config')
-  // .alias('spro-conf')
-  // .description('Initialize Advanced Starter Project')
-  // .action(() => {
-  //   inquirer.advancedInteraction().then((answers) => {
-  //     sp.run(answers)
-  //   })
-  // })
 
 program.parse(process.argv)

@@ -5,7 +5,7 @@
     "spro": "./index.js"
   },
   "version": "1.0.0",
-  "description": "Command line tool for Starter Project - a set of gulp tasks that helps you develop high performant websites using latest best practices.",
+  "description": "Command Line Interface for Starter Project, the easiest way to implement latest best practices on your project.",
   "main": "index.js",
   "repository": {
     "type": "git",
