@@ -4,3 +4,5 @@ yarn-error.log
 .yarnclean
 /test/
 /dist/
+/src/
+gulpfile.js/.favicon-data-generated.json
