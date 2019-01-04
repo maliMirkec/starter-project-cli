@@ -1,4 +1,4 @@
-const { src, dest, gulp } = require('gulp')
+const { src, dest } = require('gulp')
 const bump = require('gulp-bump')
 
 const { helpers } = require('./helpers')

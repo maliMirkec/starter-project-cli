@@ -14,7 +14,7 @@
   "keywords": [
     "Yarn",
     "Gulp",
-    "Server versioning",
+    "Semver versioning",
     "Browser-sync",
     "Sass",
     "Modular Scale",
