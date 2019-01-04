@@ -1,6 +1,6 @@
 # [Starter Project](https://starter.silvestarbistrovic.from.hr)
 
-![Starter Project Logo - Folder with start button](https://raw.githubusercontent.com/maliMirkec/starter-project-cli/master/src/gfx/png/starter-project.png)
+![Starter Project Logo - Folder with start button](https://raw.githubusercontent.com/maliMirkec/starter-project/master/src/gfx/png/starter-project.png)
 
 Command Line Interface for Starter Project, the easiest way to implement latest best practices on your project.
 
