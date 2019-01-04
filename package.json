@@ -4,7 +4,7 @@
   "bin": {
     "spro": "./index.js"
   },
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Command Line Interface for Starter Project, the easiest way to implement latest best practices on your project.",
   "main": "index.js",
   "repository": {
