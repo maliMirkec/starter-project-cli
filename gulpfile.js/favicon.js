@@ -1,29 +1,40 @@
-const gulp = require('gulp')
+const { src, dest, watch } = require('gulp')
 const realFavicon = require('gulp-real-favicon')
 const fs = require('fs')
 
-// Generate the icons. This task takes a few seconds to complete.
-// You should run it at least once to create the icons. Then,
-// you should run it whenever RealFaviconGenerator updates its
-// package (see the check-for-favicon-update task below).
-gulp.task('favicon:generate', done => realFavicon.generateFavicon(global.config.favicon.realFaviconConfig, () => done()))
+const { helpers } = require('./helpers')
 
-if (global.config.favicon.run) {
-  const parsedFaviconFile = fs.readFileSync(global.config.favicon.realFaviconConfig.markupFile)
-  const parsedFaviconData = JSON.parse(parsedFaviconFile)
+const faviconConfig = require('./.favicon.json')
+const faviconDataConfig = require('./.favicon-data.json')
 
-  // Inject the favicon markups in your HTML pages. You should run
-  // this task whenever you modify a page. You can keep this task
-  // as is or refactor your existing HTML pipeline.
-  gulp.task('favicon:inject', () => gulp.src([global.config.proot + global.config.favicon.src])
-    .pipe(realFavicon.injectFaviconMarkups(parsedFaviconData.favicon.html_code))
-    .pipe(gulp.dest(global.config.proot + global.config.favicon.dest)))
+// Will process favicon file
+function faviconStart (cb) {
+  const thisFaviconDataConfig = Object.assign({}, faviconDataConfig, {
+    masterPicture: `${helpers.parse(faviconDataConfig.masterPicture)}`,
+    dest: `${helpers.parse(faviconDataConfig.dest)}`,
+    iconsPath: `${helpers.parse(faviconDataConfig.iconsPath)}`,
+    markupFile: `${helpers.parse(faviconDataConfig.markupFile)}`
+  })
 
-  // Check for updates on RealFaviconGenerator (think: Apple has just
-  // released a new Touch icon along with the latest version of iOS).
-  // Run this task from time to time. Ideally, make it part of your
-  // continuous integration system.
-  gulp.task('favicon:update', done => realFavicon.checkForUpdates(parsedFaviconData.version))
+  if (fs.existsSync(thisFaviconDataConfig.markupFile)) {
+    realFavicon.generateFavicon(thisFaviconDataConfig, () => {
+      const parsedFaviconFile = JSON.parse(fs.readFileSync(thisFaviconDataConfig.markupFile))
 
-  gulp.task('favicon', callback => runSequence('favicon:generate', 'favicon:inject', callback))
+      src(helpers.parse(faviconConfig.src))
+        .pipe(realFavicon.injectFaviconMarkups(parsedFaviconFile.favicon.html_code))
+        .pipe(dest(helpers.parse(faviconConfig.dest)))
+
+      cb()
+    })
+  }
+}
+
+// When favicon file change, it will process favicon file, too
+function faviconListen () {
+  return watch(`${helpers.source()}/${helpers.trim(global.config.favicon.src)}/**/*`, global.config.watchConfig, faviconStart, global.bs.reload)
+}
+
+exports.favicon = {
+  faviconStart,
+  faviconListen
 }

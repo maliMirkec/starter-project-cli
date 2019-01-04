@@ -32,12 +32,10 @@
     "src": "fonts",
     "dist": "fonts"
   },
-  "favicons": {
-    "run": true,
-    "src": "favicons",
-    "dist": "favicons"
+  "favicon": {
+    "run": true
   },
-  "penthouse": {
+  "critical": {
     "run": true
   },
   "gzip": {

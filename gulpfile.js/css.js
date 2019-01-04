@@ -9,66 +9,58 @@ const rename = require('gulp-rename')
 
 const { helpers } = require('./helpers')
 
-const sassConfig = {
-  includePaths: [
-    `${helpers.proot()}/node_modules/modularscale-sass/stylesheets/`,
-    `${helpers.proot()}/node_modules/sass-mq/`,
-    `${helpers.proot()}/node_modules/normalize.css/`,
-    `${helpers.src()}/scss/`,
-    `${helpers.src()}/scss/components/`
-  ]
-}
+const cssConfig = require('./.css.json')
 
-const styleLintConfig = {
-  reporters: [{
-    formatter: 'string',
-    console: true
-  }]
-}
-
-const autoprefixedConfig = {
-  browsers: ['last 5 versions'],
-  cascade: false
-}
-
-const renameConfig = {
-  suffix: '.min'
-}
-
-const watchConfig = {
-  ignoreInitial: false
-}
-
-const sourcemapsConfig = `${helpers.src()}/${helpers.trim(global.config.css.dist)}`
-
-function cssMinify () {
-  return src(`${helpers.src()}/${helpers.trim(global.config.css.dist)}/*.critical.scss`)
-    .pipe(cleanCSS())
-    .pipe(rename(renameConfig))
-    .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.css.dist)}`))
-}
-
+// Will process Sass files
 function cssStart () {
-  return src(`${helpers.src()}/${helpers.trim(global.config.css.src)}/*.scss`)
+  const thisIncludePaths = cssConfig.sassConfig.includePaths.map(path => helpers.parse(path))
+
+  const thisSassConfig = Object.assign({}, cssConfig.sassConfig, {
+    includePaths: thisIncludePaths
+  })
+
+  return src(`${helpers.source()}/${helpers.trim(global.config.css.src)}/*.scss`)
     .pipe(sourcemaps.init())
-    .pipe(gulpStylelint(styleLintConfig))
-    .pipe(sass(sassConfig).on('error', sass.logError))
+    .pipe(gulpStylelint(cssConfig.styleLintConfig))
+    .pipe(sass(thisSassConfig).on('error', sass.logError))
     .pipe(cssimport())
-    .pipe(autoprefixer(autoprefixedConfig))
+    .pipe(autoprefixer(cssConfig.autoprefixerConfig))
     .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.css.dist)}`))
     .pipe(cleanCSS())
-    .pipe(rename(renameConfig))
-    .pipe(sourcemaps.write(sourcemapsConfig))
+    .pipe(rename(cssConfig.renameConfig))
+    .pipe(sourcemaps.write(`${helpers.source()}/${helpers.trim(global.config.css.dist)}`))
     .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.css.dist)}`))
+    .pipe(global.bs.stream())
 }
 
+// Will process non Critical Sass files
+function cssStartListen () {
+  const thisIncludePaths = cssConfig.sassConfig.includePaths.map(path => helpers.parse(path))
+
+  const thisSassConfig = Object.assign({}, cssConfig.sassConfig, {
+    includePaths: thisIncludePaths
+  })
+
+  return src([`${helpers.source()}/${helpers.trim(global.config.css.src)}/*.scss`, `!${helpers.source()}/${helpers.trim(global.config.css.src)}/*.critical.scss`])
+    .pipe(sourcemaps.init())
+    .pipe(gulpStylelint(cssConfig.styleLintConfig))
+    .pipe(sass(thisSassConfig).on('error', sass.logError))
+    .pipe(cssimport())
+    .pipe(autoprefixer(cssConfig.autoprefixerConfig))
+    .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.css.dist)}`))
+    .pipe(cleanCSS())
+    .pipe(rename(cssConfig.renameConfig))
+    .pipe(sourcemaps.write(`${helpers.source()}/${helpers.trim(global.config.css.dist)}`))
+    .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.css.dist)}`))
+    .pipe(global.bs.stream())
+}
+
+// When Sass file is changed, it will process Sass file, too
 function cssListen () {
-  watch(`${helpers.src()}/${helpers.trim(global.config.css.src)}/*.scss`, watchConfig, cssStart)
-  watch(`${helpers.src()}/${helpers.trim(global.config.css.dist)}/*.critical.scss`, watchConfig, cssMinify)
+  return watch(`${helpers.source()}/${helpers.trim(global.config.css.src)}/**/*.scss`, global.config.watchConfig, cssStartListen, global.bs.reload)
 }
 
 exports.css = {
-  cssMinify,
   cssStart,
   cssListen
 }

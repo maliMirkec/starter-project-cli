@@ -1,6 +1,23 @@
-const gulp = require('gulp')
+const { src, dest, watch } = require('gulp')
 const gzip = require('gulp-gzip')
 
-gulp.task('gzip', () => gulp.src([`${global.config.proot + global.config.dest + global.config.gzip.src}/**/*`, `!${global.config.proot + global.config.dest + global.config.gzip.src}/**/*.gz`])
-  .pipe(gzip(global.config.gzip.gzipConfig))
-  .pipe(gulp.dest(global.config.proot + global.config.dest + global.config.gzip.dest)))
+const { helpers } = require('./helpers')
+
+const gzipConfig = require('./.gzip.json')
+
+// Will gzip dist folder
+function gzipStart () {
+  return src([`${helpers.dist()}/**/*`, `!${helpers.dist()}/**/*.gz`])
+    .pipe(gzip(gzipConfig))
+    .pipe(dest(helpers.dist()))
+}
+
+// When dist folder is changed, it will gzip dist folder, too
+function gzipListen () {
+  return watch([`${helpers.dist()}/**/*`, `!${helpers.dist()}/**/*.gz`], global.config.watchConfig, gzipStart)
+}
+
+exports.gzip = {
+  gzipStart,
+  gzipListen
+}
