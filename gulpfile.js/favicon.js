@@ -20,8 +20,6 @@ function faviconStart (cb) {
     if (fs.existsSync(thisFaviconDataConfig.markupFile)) {
       const parsedFaviconFile = JSON.parse(fs.readFileSync(thisFaviconDataConfig.markupFile))
 
-      console.log(thisFaviconDataConfig)
-
       src(helpers.parse(faviconConfig.src))
         .pipe(realFavicon.injectFaviconMarkups(parsedFaviconFile.favicon.html_code))
         .pipe(dest(helpers.parse(faviconConfig.dest)))
