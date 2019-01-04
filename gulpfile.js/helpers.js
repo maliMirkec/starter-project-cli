@@ -1,4 +1,4 @@
-const { src, lastRun } = require('gulp')
+const { src } = require('gulp')
 const exit = require('gulp-exit')
 const wait = require('gulp-wait')
 

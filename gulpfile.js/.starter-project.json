@@ -8,7 +8,7 @@
     "run": true,
     "src": "html",
     "dist": "",
-    "lint": false
+    "lint": true
   },
   "css": {
     "run": true,
