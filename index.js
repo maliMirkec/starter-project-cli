@@ -10,7 +10,7 @@ log.figlet('S-PRO', false)
 log.message(`\n ** Starter Project CLI **\n`, false)
 
 program
-  .version('1.0.4')
+  .version('1.0.5')
   .description('Starter Project CLI')
 
 program
