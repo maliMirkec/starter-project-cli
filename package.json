@@ -60,7 +60,7 @@
     "inquirer": "^6.2.1",
     "mkdirp": "^0.5.1",
     "ncp": "^2.0.0",
-    "npm-cli": "^0.1.0",
+    "npm": "^6.5.0",
     "path": "^0.12.7"
   },
   "devDependencies": {}
