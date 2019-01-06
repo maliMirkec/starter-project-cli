@@ -24,8 +24,7 @@ function criticalStart (cb) {
   criticalConfig.forEach(
     (config) => {
       const thisSettings = Object.assign({}, config.settings, {
-        out: `/${helpers.trim(global.config.css.dist)}/${config.settings.out}`,
-        url: `http://localhost:${syncConfig.port || '3000'}/${config.settings.path}`
+        out: `/${helpers.trim(global.config.css.dist)}/${config.settings.out}`
       })
 
       const thisConfig = Object.assign({}, config, {
