@@ -5,7 +5,7 @@
     "spro": "./index.js"
   },
   "version": "1.0.12",
-  "description": "Command Line Interface for Starter Project, the easiest way to implement latest best practices on your project.",
+  "description": "Starter Project CLI creates a perfect Gulp development environment for everyone within a few minutes.",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -55,13 +55,10 @@
     "clear": "^0.1.0",
     "commander": "^2.19.0",
     "configstore": "^4.0.0",
-    "del": "^3.0.0",
     "figlet": "^1.2.1",
     "inquirer": "^6.2.1",
     "mkdirp": "^0.5.1",
     "ncp": "^2.0.0",
-    "npm": "^6.5.0",
-    "path": "^0.12.7"
-  },
-  "devDependencies": {}
+    "npm": "^6.5.0"
+  }
 }
