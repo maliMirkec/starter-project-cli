@@ -44,12 +44,14 @@
   },
   "kss": {
     "run": true,
-    "dist": "kss"
+    "dist": "docs/styleguide"
   },
   "sassdoc": {
-    "run": true
+    "run": true,
+    "dist": "docs/sass"
   },
   "jsdoc": {
-    "run": true
+    "run": true,
+    "dist": "docs/js"
   }
 }
