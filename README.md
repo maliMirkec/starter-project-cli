@@ -1,7 +1,7 @@
 # [Starter Project CLI](https://starter.silvestarbistrovic.from.hr/cli/)
 
-[![Starter Project CLI on NPM](https://github.com/maliMirkec/starter-project-cli/blob/master/gfx/starter-project-cli-npm.svg)](https://www.npmjs.com/package/starter-project-cli)
-[![Starter Project on NPM](https://github.com/maliMirkec/starter-project-cli/blob/master/gfx/starter-project-npm.svg)](https://www.npmjs.com/package/starter-project)
+[![Starter Project CLI on NPM](https://raw.githubusercontent.com/maliMirkec/starter-project-cli/master/gfx/starter-project-cli-npm.svg)](https://www.npmjs.com/package/starter-project-cli)
+[![Starter Project on NPM](https://raw.githubusercontent.com/maliMirkec/starter-project-cli/master/gfx/starter-project-npm.svg)](https://www.npmjs.com/package/starter-project)
 
 > Starter Project CLI creates a perfect Gulp development environment for everyone within a few minutes.
 
