@@ -1,4 +1,4 @@
-# [Starter Project CLI](https://starter.silvestarbistrovic.from.hr)
+# [Starter Project CLI](https://starter.silvestarbistrovic.from.hr/cli/)
 
 ![Starter Project CLI Logo - Folder with start button and CLI word](https://raw.githubusercontent.com/maliMirkec/starter-project-cli/master/gfx/starter-project-cli.png)
 
@@ -229,6 +229,5 @@ Show your support by starring the project on [Github](https://github.com/maliMir
 Contribute: create [a new issue](https://github.com/maliMirkec/starter-project-cli/issues/new) or create [a pull request](https://github.com/maliMirkec/starter-project-cli/compare).
 
 
-[Starter Project]: (https://starter.silvestarbistrovic.from.hr)
 [a pull request]: https://github.com/maliMirkec/starter-project/compare
 [a new issue]: https://github.com/maliMirkec/starter-project/issues/new
