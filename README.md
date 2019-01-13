@@ -2,8 +2,8 @@
 
 ![Starter Project CLI Logo - Folder with start button and CLI word](https://raw.githubusercontent.com/maliMirkec/starter-project-cli/master/gfx/starter-project-cli.png)
 
-[![Starter Project CLI on NPM](https://raw.githubusercontent.com/maliMirkec/starter-project-cli/master/gfx/starter-project-cli-npm.svg)](https://www.npmjs.com/package/starter-project-cli)
-[![Starter Project on NPM](https://raw.githubusercontent.com/maliMirkec/starter-project-cli/master/gfx/starter-project-npm.svg)](https://www.npmjs.com/package/starter-project)
+[![Starter Project CLI on NPM](https://github.com/maliMirkec/starter-project-cli/blob/master/gfx/starter-project-cli-npm.svg)](https://www.npmjs.com/package/starter-project-cli)
+[![Starter Project on NPM](https://github.com/maliMirkec/starter-project-cli/blob/master/gfx/starter-project-npm.svg)](https://www.npmjs.com/package/starter-project)
 
 
 Starter Project on npm: https://www.npmjs.com/package/starter-project
