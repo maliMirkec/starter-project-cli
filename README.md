@@ -78,8 +78,7 @@ There are four other Gulp tasks:
 | `bumpPatch` | the task for bumping patch versions of the `package.json` file |
 | `bumpMinor` | the task for bumping minor versions of the `package.json` file |
 | `bumpMajor` | the task for bumping major versions of the `package.json` file |
-
-- `clean` - the task for deleting compiled code.
+| `clean`     | the task for deleting compiled code.                           |
 
 Run `gulp --tasks` to see all available Gulp tasks.
 
