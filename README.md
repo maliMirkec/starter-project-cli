@@ -1,11 +1,11 @@
 # [Starter Project CLI](https://starter.silvestarbistrovic.from.hr/cli/)
 
-[![Starter Project CLI on NPM](https://github.com/maliMirkec/starter-project-cli/blob/1cd5ecdc354cf65e74002e684befe6139430e651/gfx/starter-project-cli-npm.svg)](https://www.npmjs.com/package/starter-project-cli)
-[![Starter Project on NPM](https://github.com/maliMirkec/starter-project-cli/blob/7e4a97cfb99b4532a2d14643b2e37219b9e60842/gfx/starter-project-npm.svg)](https://www.npmjs.com/package/starter-project)
+[![Starter Project CLI on NPM](https://github.com/maliMirkec/starter-project-cli/blob/7cbcabe46859b6c385a94c6925de99bb0e7e7d56/gfx/starter-project-cli-npm.svg)](https://www.npmjs.com/package/starter-project-cli)
+[![Starter Project on NPM](https://github.com/maliMirkec/starter-project-cli/blob/7cbcabe46859b6c385a94c6925de99bb0e7e7d56/gfx/starter-project-npm.svg)](https://www.npmjs.com/package/starter-project)
 
 > Starter Project CLI creates a perfect Gulp development environment for everyone within a few minutes.
 
-![Starter Project CLI Logo - Folder with start button and CLI word](https://github.com/maliMirkec/starter-project-cli/blob/7e4a97cfb99b4532a2d14643b2e37219b9e60842/gfx/starter-project-cli.jpg)
+![Starter Project CLI Logo - Folder with start button and CLI word](https://github.com/maliMirkec/starter-project-cli/blob/7cbcabe46859b6c385a94c6925de99bb0e7e7d56/gfx/starter-project-cli.jpg)
 
 Starter Project CLI, or `spro`, is a command line interface that could save you a vast amount of time that you usually spend on configuring your project.
 
@@ -49,7 +49,7 @@ spro start
 
 Starter Project CLI would prompt you to ask a few questions about the project structure.
 
-![Starter Project CLI in action](https://github.com/maliMirkec/starter-project-cli/blob/7e4a97cfb99b4532a2d14643b2e37219b9e60842/gfx/ss.png)
+![Starter Project CLI in action](https://github.com/maliMirkec/starter-project-cli/blob/7cbcabe46859b6c385a94c6925de99bb0e7e7d56/gfx/ss.png)
 
 Once you answer all questions, Starter Project CLI would do two things:
 - copy all required files (Gulp task files and configuration files), and
