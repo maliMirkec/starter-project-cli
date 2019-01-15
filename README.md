@@ -1,11 +1,11 @@
 # [Starter Project CLI](https://starter.silvestarbistrovic.from.hr/cli/)
 
-[![Starter Project CLI on NPM](https://raw.githubusercontent.com/maliMirkec/starter-project-cli/master/gfx/starter-package-cli-npm.svg)](https://www.npmjs.com/package/starter-project-cli)
-[![Starter Project on NPM](https://raw.githubusercontent.com/maliMirkec/starter-project-cli/master/gfx/starter-package-npm.svg)](https://www.npmjs.com/package/starter-project)
+[![Starter Project CLI on NPM](https://raw.githubusercontent.com/maliMirkec/starter-project-cli/develop/gfx/starter-package-cli-npm.svg)](https://www.npmjs.com/package/starter-project-cli)
+[![Starter Project on NPM](https://raw.githubusercontent.com/maliMirkec/starter-project-cli/develop/gfx/starter-package-npm.svg)](https://www.npmjs.com/package/starter-project)
 
 > Starter Project CLI creates a perfect Gulp development environment for everyone within a few minutes.
 
-![Starter Project CLI Logo - Folder with start button and CLI word](https://raw.githubusercontent.com/maliMirkec/starter-project-cli/master/gfx/starter-project-cli.png)
+![Starter Project CLI Logo - Folder with start button and CLI word](https://raw.githubusercontent.com/maliMirkec/starter-project-cli/develop/gfx/starter-project-cli.png)
 
 Starter Project CLI, or `spro`, is a command line interface that could save you a vast amount of time that you usually spend on configuring your project.
 
@@ -49,7 +49,7 @@ spro start
 
 Starter Project CLI would prompt you to ask a few questions about the project structure.
 
-![Starter Project CLI in action](https://raw.githubusercontent.com/maliMirkec/starter-project-cli/master/gfx/ss.png)
+![Starter Project CLI in action](https://raw.githubusercontent.com/maliMirkec/starter-project-cli/develop/gfx/ss.png)
 
 Once you answer all questions, Starter Project CLI would do two things:
 - copy all required files (Gulp task files and configuration files), and
