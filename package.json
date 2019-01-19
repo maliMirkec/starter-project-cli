@@ -74,6 +74,7 @@
     "gulp-cssimport": "^7.0.0",
     "gulp-eslint": "^5.0.0",
     "gulp-exit": "0.0.2",
+    "gulp-gzip": "^1.4.2",
     "gulp-htmllint": "0.0.16",
     "gulp-htmlmin": "^5.0.1",
     "gulp-if": "^2.0.2",
