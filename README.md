@@ -149,6 +149,7 @@ Starter Project CLI would ask you the following questions:
 - [GENERAL] Where is the folder with the source code of the project (relative to default path)?
 - [GENERAL] Where do you want to store compiled code of the project (relative to default path)?
 - [GENERAL] Are you sure that you want to override the project?
+- [BROWSER-SYNC] Do you want to run Browser Sync to preview changes in the browser?
 - [HTML] Do you want to run HTML tasks?
 - [HTML] Are you using Pug as a template engine?
 - [HTML] Where is the folder with HTML source code (relative to default source path)?
