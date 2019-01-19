@@ -30,7 +30,7 @@ function htmlStart () {
 
   return src([`${helpers.source()}/${helpers.trim(global.config.html.src)}/**/*.pug`, `!${helpers.source()}/${helpers.trim(global.config.html.src)}/_**/*.pug`, `!${helpers.source()}/${helpers.trim(global.config.html.src)}/**/_**/*.pug`])
     .pipe(gulpif(global.config.html.pug, pug(thisPugConfig)))
-    .pipe(htmllint(thisHtmllintConfig))
+    .pipe(gulpif(global.config.html.lint, htmllint(thisHtmllintConfig)))
     .pipe(inlineSource(thisInlineConfig))
     .pipe(htmlmin(htmlConfig.htmlminConfig))
     .pipe(rename(htmlConfig.renameConfig))

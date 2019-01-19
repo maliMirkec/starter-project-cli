@@ -6,15 +6,27 @@ const syncConfig = require('./.sync.json')
 
 // Start static server
 function syncStart (cb) {
-  const thisServer = syncConfig.server.baseDir
-    ? syncConfig.server
-    : Object.assign({}, syncConfig.server, { baseDir: helpers.dist() })
+  console.log(global.config.sync.run)
 
-  const thisConfig = Object.assign({}, syncConfig, {
-    server: thisServer
-  })
+  if (global.config.sync.run) {
+    let thisConfig = {}
 
-  global.bs.init(thisConfig)
+    if (syncConfig.proxy) {
+      thisConfig = Object.assign({}, syncConfig, {
+        proxy: syncConfig.proxy
+      })
+    } else if (syncConfig.server && syncConfig.server.baseDir) {
+      thisConfig = Object.assign({}, syncConfig, {
+        server: syncConfig.server
+      })
+    } else {
+      thisConfig = Object.assign({}, syncConfig.server, { baseDir: helpers.dist() })
+    }
+
+    console.log(thisConfig)
+
+    global.bs.init(thisConfig)
+  }
 
   cb()
 }

@@ -1,4 +1,5 @@
 const { src, dest, watch } = require('gulp')
+const gulpif = require('gulp-if')
 const gulpStylelint = require('gulp-stylelint')
 const sass = require('gulp-sass')
 const cssimport = require('gulp-cssimport')
@@ -21,7 +22,7 @@ function cssStart () {
 
   return src(`${helpers.source()}/${helpers.trim(global.config.css.src)}/*.scss`)
     .pipe(sourcemaps.init())
-    .pipe(gulpStylelint(cssConfig.styleLintConfig))
+    .pipe(gulpif(global.config.js.lint, gulpStylelint(cssConfig.styleLintConfig)))
     .pipe(sass(thisSassConfig).on('error', sass.logError))
     .pipe(cssimport())
     .pipe(autoprefixer(cssConfig.autoprefixerConfig))
@@ -43,7 +44,7 @@ function cssStartListen () {
 
   return src([`${helpers.source()}/${helpers.trim(global.config.css.src)}/*.scss`, `!${helpers.source()}/${helpers.trim(global.config.css.src)}/*.critical.scss`])
     .pipe(sourcemaps.init())
-    .pipe(gulpStylelint(cssConfig.styleLintConfig))
+    .pipe(gulpif(global.config.js.lint, gulpStylelint(cssConfig.styleLintConfig)))
     .pipe(sass(thisSassConfig).on('error', sass.logError))
     .pipe(cssimport())
     .pipe(autoprefixer(cssConfig.autoprefixerConfig))

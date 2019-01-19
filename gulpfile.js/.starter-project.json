@@ -4,6 +4,9 @@
   "src": "src",
   "dist": "dist",
   "override2": true,
+  "sync": {
+    "run": true
+  },
   "html": {
     "run": true,
     "pug": true,
