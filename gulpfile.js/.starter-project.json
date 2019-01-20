@@ -1,7 +1,7 @@
 {
   "override": true,
   "proot": "./",
-  "src": "src",
+  "src": "test",
   "dist": "dist",
   "override2": true,
   "sync": {
@@ -16,6 +16,7 @@
   },
   "css": {
     "run": true,
+    "sass": true,
     "src": "scss",
     "dist": "css",
     "lint": true
