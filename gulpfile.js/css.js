@@ -54,7 +54,7 @@ function cssStartListen () {
 
 // When Sass file is changed, it will process Sass file, too
 function cssListen () {
-  return watch(`${helpers.source()}/${helpers.trim(global.config.css.src)}/**/*.scss`, global.config.watchConfig, cssStartListen, global.bs.reload)
+  return watch(helpers.path(`${helpers.source()}/${helpers.trim(global.config.css.src)}/**/*.scss`), global.config.watchConfig, cssStartListen, global.bs.reload)
 }
 
 exports.css = {
