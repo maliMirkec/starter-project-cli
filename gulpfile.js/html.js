@@ -40,12 +40,12 @@ function htmlStart () {
 
 // When Pug file is changed, it will process Pug file, too
 function htmlListen () {
-  return watch(`${helpers.source()}/${helpers.trim(global.config.html.src)}/**/*.pug`, global.config.watchConfig, htmlStart)
+  return watch(helpers.path(`${helpers.source()}/${helpers.trim(global.config.html.src)}/**/*.pug`), global.config.watchConfig, htmlStart)
 }
 
 // When Critical CSS file is changed, it will process HTML, too
 function htmlListenCritical (cb) {
-  watch(`${helpers.dist()}/${helpers.trim(global.config.css.dist)}/*.critical.min.css`, global.config.watchConfig, htmlStart)
+  watch(helpers.path(`${helpers.dist()}/${helpers.trim(global.config.css.dist)}/*.critical.min.css`), global.config.watchConfig, htmlStart)
 
   cb()
 }

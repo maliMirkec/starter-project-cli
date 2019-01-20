@@ -49,7 +49,7 @@ function jsStart () {
 
 // When JS file is changed, it will process JS file, too
 function jsListen () {
-  return watch(`${helpers.source()}/${helpers.trim(global.config.js.src)}/*.js`, global.config.watchConfig, jsStart, global.bs.reload)
+  return watch(helpers.path(`${helpers.source()}/${helpers.trim(global.config.js.src)}/*.js`), global.config.watchConfig, jsStart, global.bs.reload)
 }
 
 exports.js = {
