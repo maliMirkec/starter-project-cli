@@ -14,16 +14,14 @@ const cssConfig = require('./.css.json')
 
 // Will process Sass files
 function cssStart () {
-  const thisIncludePaths = cssConfig.sassConfig.includePaths.map(path => helpers.parse(path))
-
   const thisSassConfig = Object.assign({}, cssConfig.sassConfig, {
-    includePaths: thisIncludePaths
+    includePaths: cssConfig.sassConfig.includePaths.map(path => helpers.parse(path))
   })
 
   return src(`${helpers.source()}/${helpers.trim(global.config.css.src)}/*.scss`)
     .pipe(sourcemaps.init())
-    .pipe(gulpif(global.config.js.lint, gulpStylelint(cssConfig.styleLintConfig)))
-    .pipe(sass(thisSassConfig).on('error', sass.logError))
+    .pipe(gulpif(global.config.css.lint, gulpStylelint(cssConfig.styleLintConfig)))
+    .pipe(gulpif(global.config.css.sass, sass(thisSassConfig).on('error', sass.logError)))
     .pipe(cssimport())
     .pipe(autoprefixer(cssConfig.autoprefixerConfig))
     .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.css.dist)}`))
@@ -36,16 +34,14 @@ function cssStart () {
 
 // Will process non Critical Sass files
 function cssStartListen () {
-  const thisIncludePaths = cssConfig.sassConfig.includePaths.map(path => helpers.parse(path))
-
   const thisSassConfig = Object.assign({}, cssConfig.sassConfig, {
-    includePaths: thisIncludePaths
+    includePaths: cssConfig.sassConfig.includePaths.map(path => helpers.parse(path))
   })
 
   return src([`${helpers.source()}/${helpers.trim(global.config.css.src)}/*.scss`, `!${helpers.source()}/${helpers.trim(global.config.css.src)}/*.critical.scss`])
     .pipe(sourcemaps.init())
-    .pipe(gulpif(global.config.js.lint, gulpStylelint(cssConfig.styleLintConfig)))
-    .pipe(sass(thisSassConfig).on('error', sass.logError))
+    .pipe(gulpif(global.config.css.lint, gulpStylelint(cssConfig.styleLintConfig)))
+    .pipe(gulpif(global.config.css.sass, sass(thisSassConfig).on('error', sass.logError)))
     .pipe(cssimport())
     .pipe(autoprefixer(cssConfig.autoprefixerConfig))
     .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.css.dist)}`))
