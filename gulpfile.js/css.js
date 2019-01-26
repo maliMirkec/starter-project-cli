@@ -14,9 +14,11 @@ const cssConfig = require('./.css.json')
 
 // Will process Sass files
 function cssStart () {
-  const thisSassConfig = Object.assign({}, cssConfig.sassConfig, {
-    includePaths: cssConfig.sassConfig.includePaths.map(path => helpers.parse(path))
-  })
+  const thisSassConfig = (global.config.css.lint)
+    ? Object.assign({}, cssConfig.sassConfig, {
+      includePaths: cssConfig.sassConfig.includePaths.map(path => helpers.parse(path))
+    })
+    : {}
 
   return src(`${helpers.source()}/${helpers.trim(global.config.css.src)}/*.scss`)
     .pipe(sourcemaps.init())

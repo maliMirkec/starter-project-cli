@@ -2045,9 +2045,9 @@ css-what@2.1, css-what@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/css-what/-/css-what-2.1.2.tgz#c0876d9d0480927d7d4920dcd72af3595649554d"
 
-css@2.2.1:
+css@2.2.1, "css@https://github.com/pocketjoso/css.git":
   version "2.2.1"
-  resolved "https://registry.yarnpkg.com/css/-/css-2.2.1.tgz#73a4c81de85db664d4ee674f7d47085e3b2d55dc"
+  resolved "https://github.com/pocketjoso/css.git#8ddea7e3cbc0a183ecf694a7a5fbc84326893893"
   dependencies:
     inherits "^2.0.1"
     source-map "^0.1.38"
@@ -2061,15 +2061,6 @@ css@2.X, css@^2.2.1:
     inherits "^2.0.3"
     source-map "^0.6.1"
     source-map-resolve "^0.5.2"
-    urix "^0.1.0"
-
-"css@https://github.com/pocketjoso/css.git":
-  version "2.2.1"
-  resolved "https://github.com/pocketjoso/css.git#8ddea7e3cbc0a183ecf694a7a5fbc84326893893"
-  dependencies:
-    inherits "^2.0.1"
-    source-map "^0.1.38"
-    source-map-resolve "^0.3.0"
     urix "^0.1.0"
 
 cssesc@^2.0.0:
