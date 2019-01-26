@@ -14,9 +14,11 @@ const jsConfig = require('./.js.json')
 
 // Will process JS files
 function jsStart () {
-  const thisEslintConfig = Object.assign({}, jsConfig.eslintConfig, {
-    configFile: helpers.parse(jsConfig.eslintConfig.configFile)
-  })
+  const thisEslintConfig = (global.config.js.lint)
+    ? Object.assign({}, jsConfig.eslintConfig, {
+      configFile: helpers.parse(jsConfig.eslintConfig.configFile)
+    })
+    : {}
 
   const thisIncludePaths = jsConfig.includeConfig.includePaths.map(path => helpers.parse(path))
 

@@ -62,11 +62,12 @@ _Note that the install process should last a few minutes. Do not terminate the p
 In the `gulpfile.js` folder you could find all Gulp task files and configuration files.
 
 There are three available major Gulp tasks:
-| Task      | Description                                                                                     |
-| --------- | ----------------------------------------------------------------------------------------------- |
-| `default` | the task for running and watching all the tasks (useful for more thorough development process)  |
-| `build`   | the task for running all tasks with the exit process (useful for Netlify builds)                |
-| `dev`     | the task for running and watching only essential tasks (useful for primary development process) |
+
+| Task      | Description                                                                                   |
+| --------- | --------------------------------------------------------------------------------------------- |
+| `default` | the task for running all the tasks (useful for more thorough development process)             |
+| `build`   | the task for running all tasks with the exit process (useful for Netlify builds, for example) |
+| `dev`     | the task for running only essential tasks (useful for basic development process)              |
 
 There are four other Gulp tasks:
 
