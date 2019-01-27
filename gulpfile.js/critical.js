@@ -11,11 +11,15 @@ const criticalConfig = require('./.critical.json')
 const cssConfig = require('./.css.json')
 
 // Will minify Critical CSS files
-function criticalMinify () {
-  return src(`${helpers.dist()}/${helpers.trim(global.config.css.dist)}/*.critical.css`)
-    .pipe(cleanCSS())
-    .pipe(rename(cssConfig.renameConfig))
-    .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.css.dist)}`))
+function criticalMinify (cb) {
+  if(global.config.css.minify) {
+    src(`${helpers.dist()}/${helpers.trim(global.config.css.dist)}/*.critical.css`)
+      .pipe(cleanCSS())
+      .pipe(rename(cssConfig.renameConfig))
+      .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.css.dist)}`))
+  }
+
+  cb()
 }
 
 // Will extract Critical CSS

@@ -23,4 +23,12 @@ program
     })
   })
 
+// program
+//   .command('command')
+//   .alias('c')
+//   .description('Returns Gulp install command')
+//   .action(() => {
+//     sp.cmd(answers)
+//   })
+
 program.parse(process.argv)
