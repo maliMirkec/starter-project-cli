@@ -4,7 +4,7 @@
   "bin": {
     "spro": "./index.js"
   },
-  "version": "1.0.24-rc7",
+  "version": "1.0.24-rc8",
   "description": "Starter Project CLI creates a perfect Gulp development environment for everyone within a few minutes.",
   "main": "index.js",
   "repository": {
