@@ -1,12 +1,12 @@
 const { src, dest, watch } = require('gulp')
 const gulpif = require('gulp-if')
-const gulpStylelint = require('gulp-stylelint')
-const sass = require('gulp-sass')
 const cssimport = require('gulp-cssimport')
-const autoprefixer = require('gulp-autoprefixer')
-const sourcemaps = require('gulp-sourcemaps')
-const cleanCSS = require('gulp-clean-css')
-const rename = require('gulp-rename')
+const gulpStylelint = global.config.css.lint ? require('gulp-stylelint') : false
+const sass = global.config.css.sass ? require('gulp-sass') : false
+const autoprefixer = global.config.css.autoprefix ? require('gulp-autoprefixer') : false
+const sourcemaps = global.config.css.sourcemaps ? require('gulp-sourcemaps') : false
+const cleanCSS = global.config.css.minify ? require('gulp-clean-css') : false
+const rename = global.config.css.minify ? require('gulp-rename') : false
 
 const { helpers } = require('./helpers')
 
