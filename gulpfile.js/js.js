@@ -1,12 +1,12 @@
 const { src, dest, watch } = require('gulp')
 const gulpif = require('gulp-if')
-const eslint = require('gulp-eslint')
 const babel = require('gulp-babel')
 const include = require('gulp-include')
-const sourcemaps = require('gulp-sourcemaps')
-const uglify = require('gulp-uglify')
-const rename = require('gulp-rename')
-const standard = require('gulp-standard')
+const eslint = global.config.js.lint ? require('gulp-eslint') : false
+const standard = global.config.js.lint ? require('gulp-standard') : false
+const sourcemaps = global.config.js.sourcemaps ? require('gulp-sourcemaps') : false
+const uglify = global.config.js.uglify ? require('gulp-uglify') : false
+const rename = global.config.js.uglify ? require('gulp-rename') : false
 
 const { helpers } = require('./helpers')
 
