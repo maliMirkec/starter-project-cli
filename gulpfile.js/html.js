@@ -12,7 +12,7 @@ const htmlConfig = require('./.html.json')
 
 // Will process Pug files
 function htmlStart () {
-  let thisPugConfig = false
+  let thisPugConfig = {}
 
   if (global.config.html.pug) {
     thisPugConfig = htmlConfig.pugConfig.basedir
@@ -20,19 +20,31 @@ function htmlStart () {
       : Object.assign({}, htmlConfig.pugConfig, { basedir: `${helpers.source()}/${helpers.trim(global.config.html.src)}/` })
   }
 
-  const thisHtmllintConfig = htmlConfig.htmllintConfig.config
-    ? htmlConfig.htmllintConfig.config
-    : Object.assign({}, htmlConfig.htmllintConfig, { config: `${helpers.proot()}.htmllintrc` })
+  const thisHtmllintConfig = {}
 
-  const thisInlineConfig = htmlConfig.inlineConfig.rootpath
-    ? htmlConfig.inlineConfig
-    : Object.assign({}, htmlConfig.inlineConfig, { rootpath: path.resolve(helpers.dist()) })
+  if (global.config.html.lint) {
+    thisHtmllintConfig = htmlConfig.htmllintConfig.config
+      ? htmlConfig.htmllintConfig.config
+      : Object.assign({}, htmlConfig.htmllintConfig, { config: `${helpers.proot()}.htmllintrc` })
+  }
 
-  return src([`${helpers.source()}/${helpers.trim(global.config.html.src)}/**/*.pug`, `!${helpers.source()}/${helpers.trim(global.config.html.src)}/_**/*.pug`, `!${helpers.source()}/${helpers.trim(global.config.html.src)}/**/_**/*.pug`])
+  const thisInlineConfig = {}
+
+  if (global.config.html.inline) {
+    htmlConfig.inlineConfig.rootpath
+      ? htmlConfig.inlineConfig
+      : Object.assign({}, htmlConfig.inlineConfig, { rootpath: path.resolve(helpers.dist()) })
+  }
+
+  const htmlSrc = global.config.html.pug
+    ? [`${helpers.source()}/${helpers.trim(global.config.html.src)}/**/*.pug`, `!${helpers.source()}/${helpers.trim(global.config.html.src)}/_**/*.pug`, `!${helpers.source()}/${helpers.trim(global.config.html.src)}/**/_**/*.pug`]
+    : `${helpers.source()}/${helpers.trim(global.config.html.src)}/**/*.html`
+
+  return src(htmlSrc)
     .pipe(gulpif(global.config.html.pug, pug(thisPugConfig)))
     .pipe(gulpif(global.config.html.lint, htmllint(thisHtmllintConfig)))
-    .pipe(inlineSource(thisInlineConfig))
-    .pipe(htmlmin(htmlConfig.htmlminConfig))
+    .pipe(gulpif(global.config.html.inline, inlineSource(thisInlineConfig)))
+    .pipe(gulpif(global.config.html.minify, htmlmin(htmlConfig.htmlminConfig)))
     .pipe(rename(htmlConfig.renameConfig))
     .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.html.dist)}`))
     .pipe(global.bs.stream())

@@ -27,7 +27,7 @@ function jsStart () {
   })
 
   return src(`${helpers.source()}/${helpers.trim(global.config.js.src)}/*.js`)
-    .pipe(sourcemaps.init())
+    .pipe(gulpif(global.config.js.sourcemaps, sourcemaps.init()))
     .pipe(gulpif(global.config.js.lint, standard()))
     .pipe(gulpif(global.config.js.lint, standard.reporter('default', jsConfig.standardConfig)))
     .pipe(gulpif(global.config.js.lint, eslint(thisEslintConfig)))
@@ -42,9 +42,9 @@ function jsStart () {
     .pipe(include(thisIncludeConfig))
     .pipe(babel(jsConfig.babelConfig))
     .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.js.dist)}`))
-    .pipe(uglify())
-    .pipe(rename(jsConfig.renameConfig))
-    .pipe(sourcemaps.write(`${helpers.source()}/${helpers.trim(global.config.js.dist)}`))
+    .pipe(gulpif(global.config.js.uglify, uglify()))
+    .pipe(gulpif(global.config.js.uglify, rename(jsConfig.renameConfig)))
+    .pipe(gulpif(global.config.js.sourcemaps, sourcemaps.write(`${helpers.source()}/${helpers.trim(global.config.js.dist)}`)))
     .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.js.dist)}`))
     .pipe(global.bs.stream())
 }
