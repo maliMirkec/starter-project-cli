@@ -2,10 +2,10 @@ const { src, dest, watch } = require('gulp')
 const gulpif = require('gulp-if')
 const rename = require('gulp-rename')
 const path = require('path')
-const pug = global.config.html.pug ? require('gulp-pug') : false
-const htmlmin = global.config.html.minify ? require('gulp-htmlmin') : false
-const htmllint = global.config.html.lint ? require('gulp-htmllint') : false
-const inlineSource = global.config.html.inline ? require('gulp-inline-source') : false
+const pug = global.config.html.pug ? require('gulp-pug') : () => true
+const htmlmin = global.config.html.minify ? require('gulp-htmlmin') : () => true
+const htmllint = global.config.html.lint ? require('gulp-htmllint') : () => true
+const inlineSource = global.config.html.inline ? require('gulp-inline-source') : () => true
 
 const { helpers } = require('./helpers')
 const htmlConfig = require('./.html.json')
