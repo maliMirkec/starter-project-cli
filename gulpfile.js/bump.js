@@ -37,7 +37,7 @@ function major (cb) {
 }
 
 // Will update prerelease version
-function major (cb) {
+function prerelease (cb) {
   src(bumpConfig.src.map(path => helpers.parse(path)))
     .pipe(bump({
       type: 'prerelease'
