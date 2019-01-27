@@ -14,42 +14,44 @@ const cssConfig = require('./.css.json')
 
 // Will process Sass files
 function cssStart () {
-  const thisSassConfig = (global.config.css.lint)
+  const thisSassConfig = (global.config.css.sass)
     ? Object.assign({}, cssConfig.sassConfig, {
       includePaths: cssConfig.sassConfig.includePaths.map(path => helpers.parse(path))
     })
     : {}
 
   return src(`${helpers.source()}/${helpers.trim(global.config.css.src)}/*.scss`)
-    .pipe(sourcemaps.init())
+    .pipe(gulpif(global.config.css.sourcemaps, sourcemaps.init()))
     .pipe(gulpif(global.config.css.lint, gulpStylelint(cssConfig.styleLintConfig)))
     .pipe(gulpif(global.config.css.sass, sass(thisSassConfig).on('error', sass.logError)))
     .pipe(cssimport())
-    .pipe(autoprefixer(cssConfig.autoprefixerConfig))
+    .pipe(gulpif(global.config.css.autoprefix, autoprefixer(cssConfig.autoprefixerConfig)))
     .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.css.dist)}`))
-    .pipe(cleanCSS())
-    .pipe(rename(cssConfig.renameConfig))
-    .pipe(sourcemaps.write(`${helpers.source()}/${helpers.trim(global.config.css.dist)}`))
+    .pipe(gulpif(global.config.css.minify, cleanCSS()))
+    .pipe(gulpif(global.config.css.minify, rename(cssConfig.renameConfig)))
+    .pipe(gulpif(global.config.css.sourcemaps, sourcemaps.write(`${helpers.source()}/${helpers.trim(global.config.css.dist)}`)))
     .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.css.dist)}`))
     .pipe(global.bs.stream())
 }
 
 // Will process non Critical Sass files
 function cssStartListen () {
-  const thisSassConfig = Object.assign({}, cssConfig.sassConfig, {
-    includePaths: cssConfig.sassConfig.includePaths.map(path => helpers.parse(path))
-  })
+  const thisSassConfig = (global.config.css.sass)
+    ? Object.assign({}, cssConfig.sassConfig, {
+      includePaths: cssConfig.sassConfig.includePaths.map(path => helpers.parse(path))
+    })
+    : {}
 
   return src([`${helpers.source()}/${helpers.trim(global.config.css.src)}/*.scss`, `!${helpers.source()}/${helpers.trim(global.config.css.src)}/*.critical.scss`])
-    .pipe(sourcemaps.init())
+    .pipe(gulpif(global.config.css.sourcemaps, sourcemaps.init()))
     .pipe(gulpif(global.config.css.lint, gulpStylelint(cssConfig.styleLintConfig)))
     .pipe(gulpif(global.config.css.sass, sass(thisSassConfig).on('error', sass.logError)))
     .pipe(cssimport())
     .pipe(autoprefixer(cssConfig.autoprefixerConfig))
     .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.css.dist)}`))
-    .pipe(cleanCSS())
-    .pipe(rename(cssConfig.renameConfig))
-    .pipe(sourcemaps.write(`${helpers.source()}/${helpers.trim(global.config.css.dist)}`))
+    .pipe(gulpif(global.config.css.minify, cleanCSS()))
+    .pipe(gulpif(global.config.css.minify, rename(cssConfig.renameConfig)))
+    .pipe(gulpif(global.config.css.sourcemaps, sourcemaps.write(`${helpers.source()}/${helpers.trim(global.config.css.dist)}`)))
     .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.css.dist)}`))
     .pipe(global.bs.stream())
 }

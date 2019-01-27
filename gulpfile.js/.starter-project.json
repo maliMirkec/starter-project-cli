@@ -1,31 +1,36 @@
 {
-  "override": true,
   "proot": "./",
-  "src": "test",
+  "src": "src",
   "dist": "dist",
-  "override2": true,
   "sync": {
     "run": true
   },
   "html": {
     "run": true,
-    "pug": true,
     "src": "html",
     "dist": "",
+    "pug": false,
+    "minify": true,
+    "inline": true,
     "lint": true
   },
   "css": {
     "run": true,
-    "sass": true,
     "src": "scss",
     "dist": "css",
+    "sass": true,
+    "minify": true,
+    "autoprefix": true,
+    "sourcemaps": true,
     "lint": true
   },
   "js": {
     "run": true,
     "src": "js",
     "dist": "js",
-    "lint": true
+    "uglify": true,
+    "lint": true,
+    "sourcemaps": true
   },
   "gfx": {
     "run": true,
@@ -57,5 +62,7 @@
   "jsdoc": {
     "run": true,
     "dist": "docs/js"
+  },
+  "bump": {
+    "run": true
   }
-}

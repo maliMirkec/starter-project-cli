@@ -10,7 +10,7 @@ log.figlet('S-PRO', false)
 log.message(`\n ** Starter Project CLI **\n`, false)
 
 program
-  .version('1.0.24-rc5')
+  .version('1.0.24-rc6')
   .description('Starter Project CLI')
 
 program
@@ -22,5 +22,13 @@ program
       sp.run(answers)
     })
   })
+
+// program
+//   .command('command')
+//   .alias('c')
+//   .description('Returns Gulp install command')
+//   .action(() => {
+//     sp.cmd(answers)
+//   })
 
 program.parse(process.argv)
