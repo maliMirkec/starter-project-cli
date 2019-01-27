@@ -2,11 +2,11 @@ const { src, dest, watch } = require('gulp')
 const gulpif = require('gulp-if')
 const babel = require('gulp-babel')
 const include = require('gulp-include')
-const eslint = global.config.js.lint ? require('gulp-eslint') : false
-const standard = global.config.js.lint ? require('gulp-standard') : false
-const sourcemaps = global.config.js.sourcemaps ? require('gulp-sourcemaps') : false
-const uglify = global.config.js.uglify ? require('gulp-uglify') : false
-const rename = global.config.js.uglify ? require('gulp-rename') : false
+const eslint = global.config.js.lint ? require('gulp-eslint') : () => true
+const standard = global.config.js.lint ? require('gulp-standard') : () => true
+const sourcemaps = global.config.js.sourcemaps ? require('gulp-sourcemaps') : () => true
+const uglify = global.config.js.uglify ? require('gulp-uglify') : () => true
+const rename = global.config.js.uglify ? require('gulp-rename') : () => true
 
 const { helpers } = require('./helpers')
 
@@ -25,6 +25,13 @@ function jsStart () {
   const thisIncludeConfig = Object.assign({}, jsConfig.includeConfig, {
     includePaths: thisIncludePaths
   })
+
+  if (!global.config.js.lint) {
+    standard.reporter = () => true
+    eslint.format = () => true
+    eslint.failAfterError = () => true
+    eslint.result = () => true
+  }
 
   return src(`${helpers.source()}/${helpers.trim(global.config.js.src)}/*.js`)
     .pipe(gulpif(global.config.js.sourcemaps, sourcemaps.init()))
