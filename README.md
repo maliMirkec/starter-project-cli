@@ -76,7 +76,7 @@ spro start
 
 Starter Project CLI would prompt you to ask a few questions about the project structure.
 
-![Starter Project CLI in action](https://github.com/maliMirkec/starter-project-cli/raw/7cbcabe46859b6c385a94c6925de99bb0e7e7d56/gfx/ss.png)
+![Starter Project CLI in action](https://github.com/maliMirkec/starter-project-cli/blob/d014a6defd5f2a0bbb9db2d04210a17bcb40354b/gfx/starter-project-questions.png)
 
 Once you answer all questions, Starter Project CLI would do two things:
 - copy all required files (Gulp task files and configuration files), and
