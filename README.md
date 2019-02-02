@@ -47,6 +47,7 @@ __Info: If you would like to add a Gulp task, feel free to open [a pull request]
 - [Questions](#questions)
 - [Packages](#packages)
 - [Support](#support)
+- [ToDo](#todo)
 
 ## Installation
 
@@ -743,6 +744,11 @@ Every possible package for Gulp tasks:
 Show your support by starring the project on [GitHub], or by [sharing on Twitter]. 🙏
 
 Contribute: create [a new issue] or create [a pull request].
+
+## Todo
+
+- Consider adding terminalizer https://github.com/faressoft/terminalizer
+- Consider adding siteaudit https://github.com/thecreazy/siteaudit
 
 [in the Task Configuration section]: #task-configuration
 [on BrowserSync the npm page]: https://browsersync.io/docs/options
