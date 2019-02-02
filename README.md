@@ -21,35 +21,63 @@ The tasks include compiling, lintering, formatting, compressing, and transformin
 
 __Info: If you would like to add a Gulp task, feel free to open [a pull request], or request a feature by creating [a new issue].__
 
+## Table of Contents
+
+- [Installation](#installation)
+- [Getting started](#getting-started)
+- [Gulp tasks](#gulp-tasks)
+- [Configuration file](#configuration-file)
+- [Path Placeholders](#path-placeholders)
+- [Command](#command)
+- [Task Configuration](#task-configuration)
+  - [BrowserSync Configuration](#browsersync-configuration)
+  - [Favicon Configuration](#favicon-configuration)
+  - [HTML Configuration](#html-configuration)
+  - [CSS Configuration](#css-configuration)
+  - [JavaScript Configuration](#javascript-configuration)
+  - [Images Configuration](#images-configuration)
+  - [Critical CSS Configuration](#critical-css-configuration)
+  - [Gzip Configuration](#gzip-configuration)
+  - [Semver Configuration](#semver-configuration)
+  - [KSS Configuration](#kss-configuration)
+  - [SassDoc Configuration](#sassdoc-configuration)
+  - [JSDoc Configuration](#jsdoc-configuration)
+  - [Helpers Configuration](#helpers-configuration)
+  - [Watch Configuration](#watch-configuration)
+- [Questions](#questions)
+- [Packages](#packages)
+- [Support](#support)
+- [ToDo](#todo)
+
 ## Installation
 
 You could use Starter Project CLI as a global or local package.
 
 To install the package locally, run:
-```
+```bash
 npm install starter-project-cli --save
 ```
 
 To install the package globally, run:
-```
+```bash
 npm install --global starter-project-cli --save
 ```
 
 ## Getting started
 
 After successful installation, you could run the `spro` command. If you have installed the package locally, you could initialize the package by running the following command:
-```
+```bash
 node_modules/.bin/spro start
 ```
 
 If you have installed the package globally, you could initialize the package by running the following command:
-```
+```bash
 spro start
 ```
 
 Starter Project CLI would prompt you to ask a few questions about the project structure.
 
-![Starter Project CLI in action](https://github.com/maliMirkec/starter-project-cli/raw/7cbcabe46859b6c385a94c6925de99bb0e7e7d56/gfx/ss.png)
+![Starter Project CLI in action](https://github.com/maliMirkec/starter-project-cli/blob/d014a6defd5f2a0bbb9db2d04210a17bcb40354b/gfx/starter-project-questions.png)
 
 Once you answer all questions, Starter Project CLI would do two things:
 - copy all required files (Gulp task files and configuration files), and
@@ -85,6 +113,79 @@ _Pro tip: Run `gulp --tasks` to see all available Gulp tasks._
 If you want more control over your Gulp tasks, you could find the configuration files for every single Gulp task in the `gulpfile.js` folder.
 
 `.starter-project.json` is the main configuration file in which you could find all your answers from the command line.
+
+```.starter-project.json
+{
+  {
+  "proot": "./",
+  "src": "src",
+  "dist": "dist",
+  "sync": {
+    "run": true
+  },
+  "html": {
+    "run": true,
+    "src": "html",
+    "dist": "",
+    "pug": false,
+    "minify": true,
+    "inline": true,
+    "lint": true
+  },
+  "css": {
+    "run": true,
+    "src": "scss",
+    "dist": "css",
+    "sass": true,
+    "minify": true,
+    "autoprefix": true,
+    "sourcemaps": true,
+    "lint": true
+  },
+  "js": {
+    "run": true,
+    "src": "js",
+    "dist": "js",
+    "uglify": true,
+    "lint": true,
+    "sourcemaps": true
+  },
+  "gfx": {
+    "run": true,
+    "src": "gfx",
+    "dist": "gfx"
+  },
+  "fonts": {
+    "run": true,
+    "src": "fonts",
+    "dist": "fonts"
+  },
+  "favicon": {
+    "run": true
+  },
+  "critical": {
+    "run": true
+  },
+  "gzip": {
+    "run": true
+  },
+  "kss": {
+    "run": true,
+    "dist": "docs/styleguide"
+  },
+  "sassdoc": {
+    "run": true,
+    "dist": "docs/sass"
+  },
+  "jsdoc": {
+    "run": true,
+    "dist": "docs/js"
+  },
+  "bump": {
+    "run": true
+  }
+}
+```
 
 _Avoid editing this file manually, unless you know what you are doing. Run `spro start` command again instead._
 
@@ -124,7 +225,7 @@ Every task has its own configuration file.
 ### BrowserSync Configuration
 
 The default BrowserSync configuration is defined as follows:
-```
+```.sync.json
 {
   "port": 8080,
   "server": {
@@ -138,7 +239,7 @@ You could see all available options [on BrowserSync the npm page].
 ### Favicon Configuration
 
 The default favicon configuration is defined as follows:
-```
+```.favicon.json
 {
   "run": true,
   "src": "helpers.source/config.html.src/_assets/favicon.pug",
@@ -153,7 +254,7 @@ If you need more help understanding the configuration, please open [a new issue]
 ### HTML Configuration
 
 The default HTML configuration is defined as follows:
-```
+```.html.json
 {
   "pugConfig": {
     "basedir": "",
@@ -180,7 +281,7 @@ If you need more help understanding the configuration, please open [a new issue]
 ### CSS Configuration
 
 The default CSS configuration is defined as follows:
-```
+```.css.json
 {
   "sassConfig": {
     "includePaths": [
@@ -212,7 +313,7 @@ If you need more help understanding the configuration, please open [a new issue]
 ### JavaScript Configuration
 
 The default JavaScript configuration is defined as follows:
-```
+```.js.json
 {
   "eslintConfig": {
     "configFile": "helpers.proot/.eslintrc.json",
@@ -249,7 +350,7 @@ If you need more help understanding the configuration, please open [a new issue]
 ### Images Configuration
 
 The default images configuration is defined as follows:
-```
+```.gfx.json
 {
   "gifConfig": {
     "interlaced": true
@@ -402,7 +503,7 @@ If you need more help understanding the configuration, please open [a new issue]
 ### Critical CSS Configuration
 
 The default Critical CSS configuration is defined as follows:
-```
+```.critical.json
 [{
   "src": "style.css",
   "settings": {
@@ -426,7 +527,7 @@ If you need more help understanding the configuration, please open [a new issue]
 ### Gzip Configuration
 
 The default Gzip configuration is defined as follows:
-```
+```.gzip.json
 {}
 ```
 
@@ -435,7 +536,7 @@ You could see all available options [on gulp-gzip the npm page].
 ### Semver Configuration
 
 The default Semver configuration is defined as follows:
-```
+```.bump.json
 {
   "src": ["helpers.proot/package.json"]
 }
@@ -446,7 +547,7 @@ If you need more help understanding the configuration, please open [a new issue]
 ### KSS Configuration
 
 The default KSS configuration is defined as follows:
-```
+```.kss.json
 {
   "title": "Starter Project",
   "source": "helpers.source",
@@ -466,7 +567,7 @@ If you need more help understanding the configuration, please open [a new issue]
 ### SassDoc Configuration
 
 The default SassDoc configuration is defined as follows:
-```
+```.sassdoc.json
 {
   "dest": "/docs/sass/",
   "package": "package.json",
@@ -490,7 +591,7 @@ If you need more help understanding the configuration, please open [a new issue]
 ### JSDoc Configuration
 
 The default JSDoc configuration is defined as follows:
-```
+```.jsdoc.json
 {
   "src": ["helpers.source/config.js.src/homepage.md", "helpers.source/config.js.src/"],
   "settings": {
@@ -524,7 +625,7 @@ If you need more help understanding the configuration, please open [a new issue]
 ### Helpers Configuration
 
 The default helpers configuration is defined as follows:
-```
+```.helpers.json
 {
   "wait": 20000
 }
@@ -533,7 +634,7 @@ The default helpers configuration is defined as follows:
 ### Watch Configuration
 
 The default watch configuration is defined as follows:
-```
+```.watch.json
 {
   "ignoreInitial": true
 }
@@ -643,6 +744,11 @@ Every possible package for Gulp tasks:
 Show your support by starring the project on [GitHub], or by [sharing on Twitter]. 🙏
 
 Contribute: create [a new issue] or create [a pull request].
+
+## Todo
+
+- Consider adding terminalizer https://github.com/faressoft/terminalizer
+- Consider adding siteaudit https://github.com/thecreazy/siteaudit
 
 [in the Task Configuration section]: #task-configuration
 [on BrowserSync the npm page]: https://browsersync.io/docs/options
