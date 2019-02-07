@@ -7,7 +7,7 @@
 
 ![Starter Project CLI Logo - Folder with start button and CLI word](https://github.com/maliMirkec/starter-project-cli/raw/master/gfx/starter-project-cli.png)
 
-Starter Project CLI, or `spro`, is a command line interface that could save you a vast amount of time that you usually spend on configuring your project.
+Starter Project CLI, or *SPRO* (pronounces es-pro), is a command line interface that could save you a vast amount of time that you usually spend on configuring your project.
 
 SPRO would install Gulp tasks for processing the following file types:
 * HTML (pug)
@@ -45,13 +45,13 @@ __Info: If you would like to add a Gulp task, feel free to open [a pull request]
   - [Helpers Configuration](#helpers-configuration)
   - [Watch Configuration](#watch-configuration)
 - [Questions](#questions)
-- [Packages](#packages)
+- [Dependenciest](#Dependencies)
 - [Support](#support)
 - [ToDo](#todo)
 
 ## Installation
 
-You could use Starter Project CLI as a global or local package.
+You could use SPRO as a global or local package.
 
 To install the package locally, run:
 ```bash
@@ -75,11 +75,11 @@ If you have installed the package globally, you could initialize the package by 
 spro start
 ```
 
-Starter Project CLI would prompt you to ask a few questions about the project structure.
+SPRO would prompt you to ask a few questions about the project structure.
 
 ![Starter Project CLI in action](https://github.com/maliMirkec/starter-project-cli/blob/d014a6defd5f2a0bbb9db2d04210a17bcb40354b/gfx/starter-project-questions.png)
 
-Once you answer all questions, Starter Project CLI would do two things:
+Once you answer all questions, SPRO would do two things:
 - copy all required files (Gulp task files and configuration files), and
 - prepare a command for installation of dependencies required for the project.
 
@@ -213,7 +213,7 @@ Here is the list of all available path placeholders:
 
 ## Command
 
-Starter Project CLI package has only one command:
+SPRO package has only one command:
 - `spro start`, `spro s`.
 
 Also, you could run `spro --version` to check the version of the package.
@@ -644,7 +644,7 @@ This setting will tell Gulp when to terminate the build (watch) process.
 
 ## Questions
 
-Starter Project CLI would ask you the following questions:
+SPRO would ask you the following questions:
 - [GENERAL] Do you want to override the project? Be sure to commit all changes before you proceed.',
 - [GENERAL] What is the root folder of the project?',
 - [GENERAL] Where is the folder with the source code of the project (relative to default path)?',
@@ -690,7 +690,7 @@ Starter Project CLI would ask you the following questions:
 - [SEMVER] Do you want to add semver versioning tasks (for automatic bump of any version in any file which supports semver versioning, like package.json)?',
 - [YARN] Do you use Yarn as your default dependency manager?',
 
-## Packages
+## Dependencies
 
 Every possible package for Gulp tasks:
 - @babel/core,
