@@ -6,9 +6,9 @@ global.config = require('./.starter-project.json')
 
 global.config.watchConfig = require('./.watch.json')
 
-const { sync } = require('./sync')
-const { bump } = require('./bump')
 const { clean } = require('./clean')
+const { sync } = global.config.sync.run ? require('./sync') : false
+const { bump } = global.config.bump.run ? require('./bump') : false
 const { css } = global.config.css.run ? require('./css') : false
 const { js } = global.config.js.run ? require('./js') : false
 const { gfx } = global.config.gfx.run ? require('./gfx') : false
