@@ -9,7 +9,7 @@ const sassdocConfig = require('./.sassdoc.json')
 function sassdocStart () {
   const thisSassdocConfig = Object.assign({}, sassdocConfig, {
     package: `${helpers.proot()}${sassdocConfig.package}`,
-    dest: `${helpers.dist()}${sassdocConfig.dest}`
+    dest: helpers.parse(sassdocConfig.dest)
   })
 
   return src(`${helpers.source()}/${helpers.trim(global.config.css.src)}/**/*.scss`)
