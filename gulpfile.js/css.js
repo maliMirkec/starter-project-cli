@@ -47,7 +47,7 @@ function cssStartListen () {
     .pipe(gulpif(global.config.css.lint, gulpStylelint(cssConfig.styleLintConfig)))
     .pipe(gulpif(global.config.css.sass, sass(thisSassConfig).on('error', sass.logError)))
     .pipe(cssimport())
-    .pipe(autoprefixer(cssConfig.autoprefixerConfig))
+    .pipe(gulpif(global.config.css.autoprefix, autoprefixer(cssConfig.autoprefixerConfig)))
     .pipe(dest(`${helpers.dist()}/${helpers.trim(global.config.css.dist)}`))
     .pipe(gulpif(global.config.css.minify, cleanCSS()))
     .pipe(gulpif(global.config.css.minify, rename(cssConfig.renameConfig)))

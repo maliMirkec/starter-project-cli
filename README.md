@@ -199,17 +199,20 @@ SPRO provides _path placeholders_ for easier configuration. All path placeholder
 
 Here is the list of all available path placeholders:
 
-| Placeholder        | Replacement                         |
-| ------------------ | ----------------------------------- |
-| `helpers.proot`    | project root path                   |
-| `helpers.source`   | project source path                 |
-| `helpers.dist`     | project destination path            |
-| `config.html.src`  | project HTML source path            |
-| `config.html.dist` | project HTML source path            |
-| `config.css.src`   | project CSS source path             |
-| `config.css.dist ` | project CSS destination path        |
-| `config.js.src`    | project JavaScript source path      |
-| `config.js.dist`   | project JavaScript destination path |
+| Placeholder           | Replacement                         |
+| --------------------- | ----------------------------------- |
+| `helpers.proot`       | project root path                   |
+| `helpers.source`      | project source path                 |
+| `helpers.dist`        | project destination path            |
+| `config.html.src`     | project HTML source path            |
+| `config.html.dist`    | project HTML source path            |
+| `config.css.src`      | project CSS source path             |
+| `config.css.dist `    | project CSS destination path        |
+| `config.js.src`       | project JavaScript source path      |
+| `config.js.dist`      | project JavaScript destination path |
+| `config.kss.dist`     | project KSS destination path        |
+| `config.sassdoc.dist` | project SassDoc destination path    |
+| `config.jsdoc.dist`   | project JSdoc destination path      |
 
 ## Command
 
