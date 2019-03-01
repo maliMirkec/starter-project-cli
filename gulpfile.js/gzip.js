@@ -14,7 +14,7 @@ function gzipStart () {
 
 // When dist folder is changed, it will gzip dist folder, too
 function gzipListen () {
-  return watch([helpers.path(`${helpers.dist()}/**/*`), helpers.path(`!${helpers.dist()}/**/*.gz`)], global.config.watchConfig, gzipStart)
+  return watch([helpers.trim(`${helpers.dist()}/**/*`), helpers.trim(`!${helpers.dist()}/**/*.gz`)], global.config.watchConfig, gzipStart)
 }
 
 exports.gzip = {
