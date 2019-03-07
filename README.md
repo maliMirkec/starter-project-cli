@@ -1,4 +1,4 @@
-# [Starter Project CLI](https://starter.silvestarbistrovic.from.hr/cli/)
+# [Starter Project CLI](https://starter.silvestarbistrovic.from.hr/)
 
 [![Starter Project CLI on NPM](https://img.shields.io/badge/starter--project--cli-npm-blue.svg)](https://www.npmjs.com/package/starter-project-cli)
 [![Starter Project on NPM](https://img.shields.io/badge/starter--project-npm-blue.svg)](https://www.npmjs.com/package/starter-project)
@@ -7,9 +7,9 @@
 
 ![Starter Project CLI Logo - Folder with start button and CLI word](https://github.com/maliMirkec/starter-project-cli/raw/master/gfx/starter-project-cli.png)
 
-Starter Project CLI, or *SPRO* (pronounces es-pro), is a command line interface that could save you a vast amount of time that you usually spend on configuring your project.
+Starter Project CLI, or **SPRO** (pronounces es-pro), is a command line interface that could save you a vast amount of time that you usually spend on configuring your project. SPRO's mission is to set up a perfect development environment by learning about your project architecture and then setting up Gulp tasks for all your needs.
 
-SPRO would install Gulp tasks for processing the following file types:
+SPRO should be considered as a boilerplate of predefined Gulp tasks. SPRO would install Gulp tasks for processing the following file types:
 * HTML (pug)
 * CSS (Sass)
 * JavaScript (es6)
