@@ -10,7 +10,6 @@ module.exports = {
     path: path.resolve(`${__dirname}/${helpers.parse('helpers.dist/config.js.dist/')}`),
     filename: '[name].js'
   },
-  target
   module: {
     rules: [
       {
