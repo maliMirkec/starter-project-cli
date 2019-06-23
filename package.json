@@ -55,7 +55,7 @@
     "clear": "^0.1.0",
     "clipboardy": "^1.2.3",
     "commander": "^2.19.0",
-    "configstore": "^4.0.0",
+    "configstore": "^5.0.0",
     "figlet": "^1.2.1",
     "inquirer": "^6.2.1",
     "mkdirp": "^0.5.1",
