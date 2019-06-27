@@ -125,8 +125,8 @@ external-editor@^3.0.3:
     tmp "^0.0.33"
 
 figlet@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/figlet/-/figlet-1.2.1.tgz#48d35df9d9b10b1b3888302e6e57904a0b00509c"
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/figlet/-/figlet-1.2.3.tgz#7d25df546f41fc411c2a8b88012d48d55de72129"
 
 figures@^2.0.0:
   version "2.0.0"
