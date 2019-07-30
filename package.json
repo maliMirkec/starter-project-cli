@@ -44,12 +44,12 @@
     "CLI",
     "Command Line Interface"
   ],
-  "author": "Silvestar Bistrović <me@silvestarbistrovic.from.hr>",
+  "author": "Silvestar Bistrović <me@silvestar.codes>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/maliMirkec/starter-project-cli/issues"
   },
-  "homepage": "https://starter.silvestarbistrovic.from.hr",
+  "homepage": "https://starter.silvestar.codes",
   "dependencies": {
     "chalk": "^2.4.1",
     "clear": "^0.1.0",
