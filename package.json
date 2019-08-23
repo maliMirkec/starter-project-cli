@@ -57,7 +57,7 @@
     "commander": "^2.19.0",
     "configstore": "^5.0.0",
     "figlet": "^1.2.1",
-    "inquirer": "^6.2.1",
+    "inquirer": "^7.0.0",
     "mkdirp": "^0.5.1",
     "ncp": "^2.0.0",
     "path": "^0.12.7"
