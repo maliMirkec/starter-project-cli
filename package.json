@@ -51,7 +51,7 @@
   },
   "homepage": "https://starter.silvestar.codes",
   "dependencies": {
-    "chalk": "^2.4.1",
+    "chalk": "^3.0.0",
     "clear": "^0.1.0",
     "clipboardy": "^2.1.0",
     "commander": "^3.0.2",
