@@ -10,12 +10,13 @@
 Starter Project CLI, or **SPRO** (pronounces es-pro), is a command line interface that could save you a vast amount of time that you usually spend on configuring your project. SPRO's mission is to set up a perfect development environment by learning about your project architecture and then setting up Gulp tasks for all your needs.
 
 SPRO should be considered as a boilerplate of predefined Gulp tasks. SPRO would install Gulp tasks for processing the following file types:
-* HTML (pug)
-* CSS (Sass)
-* JavaScript (es6)
-* Graphic (PNG, JPEG, SVG, GIF)
-* Fonts
-* Favicons
+
+- HTML (pug)
+- CSS (Sass)
+- JavaScript (es6)
+- Graphic (PNG, JPEG, SVG, GIF)
+- Fonts
+- Favicons
 
 The tasks include compiling, lintering, formatting, compressing, and transforming your source file to produce the most optimized production files.
 
@@ -37,7 +38,6 @@ __Info: If you would like to add a Gulp task, feel free to open [a pull request]
   - [JavaScript Configuration](#javascript-configuration)
   - [Images Configuration](#images-configuration)
   - [Critical CSS Configuration](#critical-css-configuration)
-  - [Gzip Configuration](#gzip-configuration)
   - [Semver Configuration](#semver-configuration)
   - [KSS Configuration](#kss-configuration)
   - [SassDoc Configuration](#sassdoc-configuration)
@@ -54,24 +54,28 @@ __Info: If you would like to add a Gulp task, feel free to open [a pull request]
 You could use SPRO as a global or local package.
 
 To install the package locally, run:
-```bash
+
+```console
 npm install starter-project-cli --save
 ```
 
 To install the package globally, run:
-```bash
+
+```console
 npm install --global starter-project-cli --save
 ```
 
 ## Getting started
 
 After successful installation, you could run the `spro` command. If you have installed the package locally, you could initialize the package by running the following command:
-```bash
+
+```console
 node_modules/.bin/spro start
 ```
 
 If you have installed the package globally, you could initialize the package by running the following command:
-```bash
+
+```console
 spro start
 ```
 
@@ -166,9 +170,6 @@ If you want more control over your Gulp tasks, you could find the configuration 
   "critical": {
     "run": true
   },
-  "gzip": {
-    "run": true
-  },
   "kss": {
     "run": true,
     "dist": "docs/styleguide"
@@ -217,6 +218,7 @@ Here is the list of all available path placeholders:
 ## Command
 
 SPRO package has only one command:
+
 - `spro start`, `spro s`.
 
 Also, you could run `spro --version` to check the version of the package.
@@ -228,6 +230,7 @@ Every task has its own configuration file.
 ### BrowserSync Configuration
 
 The default BrowserSync configuration is defined as follows:
+
 ```.sync.json
 {
   "port": 8080,
@@ -242,6 +245,7 @@ You could see all available options [on BrowserSync the npm page].
 ### Favicon Configuration
 
 The default favicon configuration is defined as follows:
+
 ```.favicon.json
 {
   "run": true,
@@ -257,6 +261,7 @@ If you need more help understanding the configuration, please open [a new issue]
 ### HTML Configuration
 
 The default HTML configuration is defined as follows:
+
 ```.html.json
 {
   "pugConfig": {
@@ -284,6 +289,7 @@ If you need more help understanding the configuration, please open [a new issue]
 ### CSS Configuration
 
 The default CSS configuration is defined as follows:
+
 ```.css.json
 {
   "sassConfig": {
@@ -316,6 +322,7 @@ If you need more help understanding the configuration, please open [a new issue]
 ### JavaScript Configuration
 
 The default JavaScript configuration is defined as follows:
+
 ```.js.json
 {
   "eslintConfig": {
@@ -332,16 +339,6 @@ The default JavaScript configuration is defined as follows:
   "babelConfig": {
     "presets": ["@babel/env"]
   },
-  "standardConfig": {
-    "breakOnError": false,
-    "showRuleNames": true,
-    "standard": {
-      "globals": [
-        "requestAnimationFrame",
-        "sessionStorage"
-      ]
-    }
-  },
   "renameConfig": {
     "suffix": ".min"
   }
@@ -353,6 +350,7 @@ If you need more help understanding the configuration, please open [a new issue]
 ### Images Configuration
 
 The default images configuration is defined as follows:
+
 ```.gfx.json
 {
   "gifConfig": {
@@ -506,6 +504,7 @@ If you need more help understanding the configuration, please open [a new issue]
 ### Critical CSS Configuration
 
 The default Critical CSS configuration is defined as follows:
+
 ```.critical.json
 [{
   "src": "style.css",
@@ -527,18 +526,10 @@ The default Critical CSS configuration is defined as follows:
 
 If you need more help understanding the configuration, please open [a new issue].
 
-### Gzip Configuration
-
-The default Gzip configuration is defined as follows:
-```.gzip.json
-{}
-```
-
-You could see all available options [on gulp-gzip the npm page].
-
 ### Semver Configuration
 
 The default Semver configuration is defined as follows:
+
 ```.bump.json
 {
   "src": ["helpers.proot/package.json"]
@@ -550,6 +541,7 @@ If you need more help understanding the configuration, please open [a new issue]
 ### KSS Configuration
 
 The default KSS configuration is defined as follows:
+
 ```.kss.json
 {
   "title": "Starter Project",
@@ -570,6 +562,7 @@ If you need more help understanding the configuration, please open [a new issue]
 ### SassDoc Configuration
 
 The default SassDoc configuration is defined as follows:
+
 ```.sassdoc.json
 {
   "dest": "/docs/sass/",
@@ -594,6 +587,7 @@ If you need more help understanding the configuration, please open [a new issue]
 ### JSDoc Configuration
 
 The default JSDoc configuration is defined as follows:
+
 ```.jsdoc.json
 {
   "src": ["helpers.source/config.js.src/homepage.md", "helpers.source/config.js.src/"],
@@ -628,6 +622,7 @@ If you need more help understanding the configuration, please open [a new issue]
 ### Helpers Configuration
 
 The default helpers configuration is defined as follows:
+
 ```.helpers.json
 {
   "wait": 20000
@@ -637,6 +632,7 @@ The default helpers configuration is defined as follows:
 ### Watch Configuration
 
 The default watch configuration is defined as follows:
+
 ```.watch.json
 {
   "ignoreInitial": true
@@ -648,6 +644,7 @@ This setting will tell Gulp when to terminate the build (watch) process.
 ## Questions
 
 SPRO would ask you the following questions:
+
 - [GENERAL] Do you want to override the project? Be sure to commit all changes before you proceed.',
 - [GENERAL] What is the root folder of the project?',
 - [GENERAL] Where is the folder with the source code of the project (relative to default path)?',
@@ -683,7 +680,6 @@ SPRO would ask you the following questions:
 - [FONTS] Where do you want to store local fonts (relative to default destination path)?',
 - [FAVICON] Do you want to run favicon tasks?',
 - [CRITICAL] Do you want to extract Critical CSS?',
-- [COMPRESS] Do you want to compress (gzip) all assets?',
 - [KSS] Do you want to add KSS style guide?',
 - [KSS] Where do you want to store KSS style guide (relative to default destination path)?',
 - [SASSDOC] Do you want to add documentation for the SASS code (SassDoc)?',
@@ -696,16 +692,15 @@ SPRO would ask you the following questions:
 ## Dependencies
 
 Every possible package for Gulp tasks:
+
 - @babel/core,
 - @babel/preset-env,
 - browser-sync,
 - del,
 - eslint,
 - eslint-config-airbnb-base,
-- eslint-config-standard,
 - eslint-plugin-import,
 - eslint-plugin-node,
-- eslint-plugin-standard,
 - gulp,
 - gulp-autoprefixer,
 - gulp-babel,
@@ -714,7 +709,6 @@ Every possible package for Gulp tasks:
 - gulp-cssimport,
 - gulp-eslint,
 - gulp-exit,
-- gulp-gzip,
 - gulp-htmllint,
 - gulp-htmlmin,
 - gulp-if,
@@ -728,7 +722,6 @@ Every possible package for Gulp tasks:
 - gulp-rename,
 - gulp-sass,
 - gulp-sourcemaps,
-- gulp-standard,
 - gulp-stylelint,
 - gulp-uglify,
 - gulp-wait,
@@ -756,7 +749,6 @@ Contribute: create [a new issue] or create [a pull request].
 [in the Task Configuration section]: #task-configuration
 [on BrowserSync the npm page]: https://browsersync.io/docs/options
 [RealFaviconGenerator]: https://realfavicongenerator.net/
-[on gulp-gzip the npm page]: https://www.npmjs.com/package/gulp-gzip#options
 [GitHub]: https://github.com/maliMirkec/starter-project-cli
 [sharing on Twitter]: https://twitter.com/intent/tweet?url=https://github.com/maliMirkec/starter-project-cli/&text=Starter%20Project%20CLI%20creates%20a%20perfect%20Gulp%20development%20environment%20for%20everyone%20within%20a%20few%20minutes.%20🔥%20Try%20it%20today!%20💯&via=malimirkeccita
 [a new issue]: https://github.com/maliMirkec/starter-project-cli/issues/new

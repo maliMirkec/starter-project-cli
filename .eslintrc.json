@@ -1,7 +1,10 @@
 {
-  "extends": ["airbnb-base", "standard"],
+  "extends": ["airbnb-base"],
   "parserOptions": {
-    "ecmaVersion": 6
+    "ecmaVersion": 2017,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
   },
   "rules": {
     "no-console": "off"

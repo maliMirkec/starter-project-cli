@@ -23,7 +23,6 @@
     "JavaScript",
     "es6",
     "Babel",
-    "Standard",
     "ESLint",
     "HTML",
     "Pug",
@@ -37,7 +36,6 @@
     "Critical CSS",
     "Penthouse",
     "Sourcemaps",
-    "Gzip",
     "SassDoc",
     "JSDoc",
     "Styleguide",
@@ -56,9 +54,10 @@
     "clipboardy": "^2.1.0",
     "commander": "^4.0.1",
     "configstore": "^5.0.0",
+    "eslint-config-airbnb-base": "^14.0.0",
     "figlet": "^1.2.1",
-    "inquirer": "^7.0.0",
-    "mkdirp": "^0.5.1",
+    "inquirer": "^7.0.4",
+    "mkdirp": "^1.0.3",
     "ncp": "^2.0.0",
     "path": "^0.12.7"
   }

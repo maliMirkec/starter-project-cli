@@ -1,46 +1,57 @@
-const { src, dest, watch } = require('gulp')
-const gulpif = require('gulp-if')
-const rename = require('gulp-rename')
-const path = require('path')
-const pug = global.config.html.pug ? require('gulp-pug') : () => true
-const htmlmin = global.config.html.minify ? require('gulp-htmlmin') : () => true
-const htmllint = global.config.html.lint ? require('gulp-htmllint') : () => true
-const inlineSource = global.config.html.inline ? require('gulp-inline-source') : () => true
+const { src, dest, watch } = require('gulp');
+const gulpif = require('gulp-if');
+const rename = require('gulp-rename');
+const path = require('path');
+const pug = global.config.html.pug ? require('gulp-pug') : () => true;
+const htmlmin = global.config.html.minify ? require('gulp-htmlmin') : () => true;
+const htmllint = global.config.html.lint ? require('gulp-htmllint') : () => true;
+const inlineSource = global.config.html.inline ? require('gulp-inline-source') : () => true;
 
-const { helpers } = require('./helpers')
+const { helpers } = require('./helpers');
 
-const htmlConfig = require('./.html.json')
+const htmlConfig = require('./.html.json');
 
-let thisPugConfig = {}
+const ext = global.config.html.pug ? 'pug' : 'html';
+
+let thisPugConfig = {};
 
 if (global.config.html.pug) {
   thisPugConfig = htmlConfig.pugConfig.basedir
     ? htmlConfig.pugConfig
-    : Object.assign({}, htmlConfig.pugConfig, { basedir: helpers.trim(`${helpers.source()}/${global.config.html.src}/`) })
+    : ({
+      ...htmlConfig.pugConfig,
+      basedir: helpers.trim(`${helpers.source()}/${global.config.html.src}/`),
+    });
 }
 
-let thisHtmllintConfig = {}
+let thisHtmllintConfig = {};
 
 if (global.config.html.lint) {
   thisHtmllintConfig = htmlConfig.htmllintConfig.config
     ? htmlConfig.htmllintConfig.config
-    : Object.assign({}, htmlConfig.htmllintConfig, { config: `${helpers.proot()}.htmllintrc` })
+    : ({
+      ...htmlConfig.htmllintConfig,
+      config: `${helpers.proot()}.htmllintrc`,
+    });
 }
 
-let thisInlineConfig = {}
+let thisInlineConfig = {};
 
 if (global.config.html.inline) {
   thisInlineConfig = htmlConfig.inlineConfig.rootpath
     ? htmlConfig.inlineConfig
-    : Object.assign({}, htmlConfig.inlineConfig, { rootpath: path.resolve(helpers.dist()) })
+    : ({
+      ...htmlConfig.inlineConfig,
+      rootpath: path.resolve(helpers.dist()),
+    });
 }
 
 const htmlSrc = global.config.html.pug
-  ? [helpers.trim(`${helpers.source()}/${global.config.html.src}/**/*.pug`), helpers.trim(`!${helpers.source()}/${global.config.html.src}/_**/*.pug`), helpers.trim(`!${helpers.source()}/${global.config.html.src}/**/_**/*.pug`)]
-  : helpers.trim(`${helpers.source()}/${global.config.html.src}/**/*.html`)
+  ? [helpers.trim(`${helpers.source()}/${global.config.html.src}/**/*.${ext}`), helpers.trim(`!${helpers.source()}/${global.config.html.src}/_**/*.${ext}`), helpers.trim(`!${helpers.source()}/${global.config.html.src}/**/_**/*.${ext}`)]
+  : helpers.trim(`${helpers.source()}/${global.config.html.src}/**/*.html`);
 
 // Will process Pug files
-function htmlStart () {
+function htmlStart() {
   return src(htmlSrc)
     .pipe(gulpif(global.config.html.pug, pug(thisPugConfig)))
     .pipe(gulpif(global.config.html.lint, htmllint(thisHtmllintConfig)))
@@ -48,23 +59,23 @@ function htmlStart () {
     .pipe(gulpif(global.config.html.minify, htmlmin(htmlConfig.htmlminConfig)))
     .pipe(rename(htmlConfig.renameConfig))
     .pipe(dest(helpers.trim(`${helpers.dist()}/${global.config.html.dist}`)))
-    .pipe(gulpif(global.config.sync.run, global.bs.stream()))
+    .pipe(gulpif(global.config.sync.run, global.bs.stream()));
 }
 
 // When Pug file is changed, it will process Pug file, too
-function htmlListen () {
-  return watch(helpers.trim(`${helpers.source()}/${global.config.html.src}/**/*.pug`), global.config.watchConfig, htmlStart)
+function htmlListen() {
+  return watch(helpers.trim(`${helpers.source()}/${global.config.html.src}/**/*.${ext}`), global.config.watchConfig, htmlStart);
 }
 
 // When Critical CSS file is changed, it will process HTML, too
-function htmlListenCritical (cb) {
-  watch(helpers.trim(`${helpers.dist()}/${global.config.css.dist}/*.critical.min.css`), global.config.watchConfig, htmlStart)
+function htmlListenCritical(cb) {
+  watch(helpers.trim(`${helpers.dist()}/${global.config.css.dist}/*.critical.min.css`), global.config.watchConfig, htmlStart);
 
-  cb()
+  cb();
 }
 
 exports.html = {
   htmlStart,
   htmlListen,
-  htmlListenCritical
-}
+  htmlListenCritical,
+};
