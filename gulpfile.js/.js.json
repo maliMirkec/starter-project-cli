@@ -10,16 +10,6 @@
       "helpers.proot/node_modules"
     ]
   },
-  "standardConfig": {
-    "breakOnError": false,
-    "showRuleNames": true,
-    "standard": {
-      "globals": [
-        "requestAnimationFrame",
-        "sessionStorage"
-      ]
-    }
-  },
   "renameConfig": {
     "suffix": ".min"
   }

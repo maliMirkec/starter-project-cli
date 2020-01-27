@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 
-const program = require('commander')
-const log = require('./lib/log')
-const inquirer = require('./lib/inquirer')
-const sp = require('./lib/starter-project')
+const program = require('commander');
+const log = require('./lib/log');
+const inquirer = require('./lib/inquirer');
+const sp = require('./lib/starter-project');
 
-log.clear()
-log.figlet('S-PRO', false)
-log.message(`\n ** Starter Project CLI **\n`, false)
+log.clear();
+log.figlet('S-PRO', false);
+log.message('\n ** Starter Project CLI **\n', false);
 
 program
   .version('1.0.33')
-  .description('Starter Project CLI')
+  .description('Starter Project CLI');
 
 program
   .command('start')
@@ -19,9 +19,9 @@ program
   .description('Initialize Starter Project')
   .action(() => {
     inquirer.basicInteraction().then((answers) => {
-      sp.run(answers)
-    })
-  })
+      sp.run(answers);
+    });
+  });
 
 // program
 //   .command('command')
@@ -31,4 +31,4 @@ program
 //     sp.cmd(answers)
 //   })
 
-program.parse(process.argv)
+program.parse(process.argv);
