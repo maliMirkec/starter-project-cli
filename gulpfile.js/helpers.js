@@ -8,12 +8,12 @@ const helpersConfig = require('./.helpers.json');
 const trim = (p) => {
   let r = p;
 
-  while (p.indexOf('..') !== -1) {
-    r = p.replace('..', '');
+  while (r.indexOf('..') !== -1) {
+    r = r.replace('..', '');
   }
 
-  while (p.indexOf('//') !== -1) {
-    r = p.replace('//', '/');
+  while (r.indexOf('//') !== -1) {
+    r = r.replace('//', '/');
   }
 
   return r;
