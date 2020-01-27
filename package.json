@@ -58,7 +58,7 @@
     "configstore": "^5.0.0",
     "figlet": "^1.2.1",
     "inquirer": "^7.0.0",
-    "mkdirp": "^0.5.1",
+    "mkdirp": "^1.0.3",
     "ncp": "^2.0.0",
     "path": "^0.12.7"
   }
