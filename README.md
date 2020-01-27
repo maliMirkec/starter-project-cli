@@ -695,6 +695,7 @@ Every possible package for Gulp tasks:
 
 - @babel/core,
 - @babel/preset-env,
+- babel-eslint,
 - browser-sync,
 - del,
 - eslint,

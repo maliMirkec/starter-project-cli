@@ -32,22 +32,6 @@ if (!global.config.js.lint) {
 
 webpackConfig.devtool = (global.config.js.sourcemaps) ? 'sourcemaps' : '';
 
-function jsStartDev(cb) {
-  webpackConfig.mode = 'development';
-
-  jsStart();
-
-  cb();
-}
-
-function jsStartProd(cb) {
-  webpackConfig.mode = (global.config.js.uglify) ? 'production' : 'development';
-
-  jsStart();
-
-  cb();
-}
-
 // Will process JS files
 function jsStart() {
   return src(helpers.trim(`${helpers.source()}/${global.config.js.src}/*.js`))
@@ -70,6 +54,22 @@ function jsStart() {
     .pipe(gulpif(global.config.js.sourcemaps, sourcemaps.write(helpers.trim(`${helpers.source()}/${global.config.js.dist}`))))
     .pipe(dest(helpers.trim(`${helpers.dist()}/${global.config.js.dist}`)))
     .pipe(gulpif(global.config.sync.run, global.bs.stream()));
+}
+
+function jsStartDev(cb) {
+  webpackConfig.mode = 'development';
+
+  jsStart();
+
+  cb();
+}
+
+function jsStartProd(cb) {
+  webpackConfig.mode = (global.config.js.uglify) ? 'production' : 'development';
+
+  jsStart();
+
+  cb();
 }
 
 // When JS file is changed, it will process JS file, too
