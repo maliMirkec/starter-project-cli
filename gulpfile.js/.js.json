@@ -10,6 +10,9 @@
       "helpers.proot/node_modules"
     ]
   },
+  "babelConfig": {
+    "presets": ["@babel/env"]
+  },
   "renameConfig": {
     "suffix": ".min"
   }

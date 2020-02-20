@@ -7,18 +7,18 @@
   },
   "html": {
     "run": true,
+    "pug": true,
     "src": "html",
     "dist": "",
-    "pug": false,
     "minify": true,
     "inline": true,
     "lint": true
   },
   "css": {
     "run": true,
+    "sass": true,
     "src": "scss",
     "dist": "css",
-    "sass": true,
     "minify": true,
     "autoprefix": true,
     "sourcemaps": true,
@@ -29,8 +29,8 @@
     "src": "js",
     "dist": "js",
     "uglify": true,
-    "lint": true,
-    "sourcemaps": true
+    "sourcemaps": true,
+    "lint": true
   },
   "gfx": {
     "run": true,
@@ -62,5 +62,6 @@
   },
   "bump": {
     "run": true
-  }
+  },
+  "yarn": true
 }
