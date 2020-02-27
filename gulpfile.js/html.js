@@ -17,10 +17,10 @@ const ext = global.config.html.pug ? 'pug' : 'html';
 
 let thisPugConfig = {};
 
-const siteConfigs = [{
+const siteConfigs = global.config.html.data ? [{
   name: 'site',
   path: helpers.trim(`${helpers.proot()}/data/site.json`),
-}];
+}] : {};
 
 if (global.config.html.pug) {
   thisPugConfig = htmlConfig.pugConfig.basedir
@@ -53,7 +53,7 @@ const htmlSrc = global.config.html.pug
 // Will process Pug files
 function htmlStart() {
   return src(htmlSrc)
-    .pipe(gulpif(global.config.html.pug, data(() => {
+    .pipe(gulpif(global.config.html.data, data(() => {
       const temp = {};
 
       siteConfigs.forEach((siteConfig) => {
@@ -73,7 +73,7 @@ function htmlStart() {
 
 // When Pug, md, or config file is changed, it will process Pug file, too
 function htmlListen() {
-  return watch([...siteConfigs.map((siteConfig) => siteConfig.path), helpers.trim(`${helpers.source()}/${global.config.html.src}/**/*.${ext}`), helpers.trim(`${helpers.source()}/${global.config.html.src}/**/*.md`)], global.config.watchConfig, htmlStart);
+  return watch([...(global.config.html.data ? siteConfigs.map((siteConfig) => siteConfig.path) : ''), helpers.trim(`${helpers.source()}/${global.config.html.src}/**/*.${ext}`), helpers.trim(`${helpers.source()}/${global.config.html.src}/**/*.md`)], global.config.watchConfig, htmlStart);
 }
 
 exports.html = {

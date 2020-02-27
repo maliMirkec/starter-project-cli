@@ -8,10 +8,11 @@
   "html": {
     "run": true,
     "pug": true,
+    "data": false,
+    "inline": true,
     "src": "html",
     "dist": "",
     "minify": true,
-    "inline": true,
     "lint": true
   },
   "css": {
