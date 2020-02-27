@@ -6,3 +6,4 @@ yarn-error.log
 /dist/
 /src/
 gulpfile.js/.favicon-data-generated.json
+starter-project-cli-*
