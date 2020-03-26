@@ -1,0 +1,20 @@
+{
+  "extends": ["airbnb-base"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "rules": {
+    "no-console": "off"
+  },
+  "globals": {
+    "requestAnimationFrame": true,
+    "sessionStorage": true
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "amd": true,
+    "commonjs": true
+  }
+}
