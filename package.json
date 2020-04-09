@@ -50,7 +50,7 @@
   "homepage": "https://starter.silvestar.codes",
   "dependencies": {
     "babel-eslint": "^10.0.3",
-    "chalk": "^3.0.0",
+    "chalk": "^4.0.0",
     "clear": "^0.1.0",
     "clipboardy": "^2.3.0",
     "commander": "^5.0.0",
