@@ -120,7 +120,6 @@ If you want more control over your Gulp tasks, you could find the configuration 
 
 ```.starter-project.json
 {
-  {
   "proot": "./",
   "src": "src",
   "dist": "dist",
