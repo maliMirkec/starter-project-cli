@@ -22,6 +22,10 @@ The tasks include compiling, lintering, formatting, compressing, and transformin
 
 __Info: If you would like to add a Gulp task, feel free to open [a pull request], or request a feature by creating [a new issue].__
 
+## Supporters
+
+[![Stargazers repo roster for @maliMirkec/starter-project-cli](https://reporoster.com/stars/maliMirkec/starter-project-cli)](https://github.com/maliMirkec/starter-project-cli/stargazers)
+
 ## Table of Contents
 
 - [Installation](#installation)
