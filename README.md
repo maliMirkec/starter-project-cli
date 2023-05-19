@@ -1,4 +1,4 @@
-# [Starter Project CLI](https://starter.silvestar.codes/)
+# [Starter Project CLI](https://www.silvestar.codes/side-projects/starter-project/)
 
 [![Starter Project CLI on NPM](https://img.shields.io/badge/starter--project--cli-npm-blue.svg)](https://www.npmjs.com/package/starter-project-cli)
 [![Starter Project on NPM](https://img.shields.io/badge/starter--project-npm-blue.svg)](https://www.npmjs.com/package/starter-project)
